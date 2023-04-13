@@ -15,12 +15,6 @@ ul {
     list-style: none;
 }
 
-body {
-    font-family: jost;
-    color: black;
-    background-color: #E9E9E9;
-}
-
 .container {
     padding-left: 18px;
     padding-right: 18px;

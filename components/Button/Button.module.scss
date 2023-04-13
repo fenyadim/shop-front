@@ -1,0 +1,18 @@
+.button_wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 10px;
+  border-radius: 20px;
+  background: var(--accent);
+  cursor: pointer;
+
+  p {
+    font-size: 10px;
+    margin-right: 10px;
+  }
+
+  img {
+    height: 13px;
+    width: 13px;
+  }
+}

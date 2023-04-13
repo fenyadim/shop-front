@@ -1,11 +1,26 @@
 import React from "react";
 import Head from "next/head";
-import { Jost } from "next/font/google";
+import localFont from "next/font/local";
 import Header from "@/components/Header";
 
-const jost = Jost({
-    weight: ['400', '500', '800'],
-    subsets: ['latin']
+const jostFont = localFont({
+    src: [
+        {
+            path: '../../public/fonts/Jost-Regular.woff2',
+            weight: '400',
+            style: 'normal'
+        },
+        {
+            path: '../../public/fonts/Jost-Medium.woff2',
+            weight: '500',
+            style: 'normal'
+        },
+        {
+            path: '../../public/fonts/Jost-SemiBold.woff2',
+            weight: '600',
+            style: 'normal'
+        },
+    ]
 })
 
 const Layout: React.FC = ({children}) => {
@@ -17,7 +32,7 @@ const Layout: React.FC = ({children}) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div className={jost.className}>
+            <div className={jostFont.className}>
                 <Header />
                 <main>{children}</main>
             </div>

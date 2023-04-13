@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: var(--black);
+    font-weight: 400;
+}
+
+body {
+    background: #F8F8F8;
+}
+
+:root {
+    --accent: #FFEED3;
+    --accent-dark: #FFC979;
+    --grey: #E9E9E9;
+    --grey-dark: #CFCFCF;
+    --black: #1E1E1E;
+}
