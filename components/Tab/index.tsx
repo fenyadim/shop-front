@@ -1,43 +1,45 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React from "react";
 import cn from "classnames";
 import styles from "./Tab.module.scss";
-
-enum SizeEnum {
-  normal = "normal",
-  big = "big",
-}
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 interface ITab {
   categories: [
     {
-      title: string;
-      url: string;
+      attributes: {
+        title: string;
+        slug: string;
+      };
     }
   ];
-  size?: SizeEnum;
-  activeTab: string;
-  toggleTab: Dispatch<SetStateAction<string>>;
+  isSubTab?: boolean;
+  activeTab: string | string[] | undefined;
 }
 
-const Tab: React.FC<ITab> = ({
-  categories,
-  size = SizeEnum.normal,
-  activeTab,
-  toggleTab,
-}) => {
+const Tab: React.FC<ITab> = ({ categories, isSubTab = false, activeTab }) => {
+  const { query } = useRouter();
+
   return (
     <ul className={styles.tab_wrapper}>
-      {categories.map(({ title, url }, index) => (
+      {categories.map(({ attributes }, index) => (
         <li
-          key={`${url}_${index}`}
+          key={`${attributes.slug}_${index}`}
           className={cn(
             styles.tab_item,
-            size === SizeEnum.big && styles.big,
-            activeTab === url && styles.active
+            !isSubTab && styles.big,
+            activeTab === attributes.slug && styles.active
           )}
-          onClick={() => toggleTab(url)}
         >
-          <a href="#">{title}</a>
+          <Link
+            href={
+              !isSubTab
+                ? `/${attributes.slug}`
+                : `/${query.category}/${attributes.slug}`
+            }
+          >
+            {attributes.title}
+          </Link>
         </li>
       ))}
     </ul>

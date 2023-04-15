@@ -1,17 +1,23 @@
 import React from "react";
+import Image from "next/image";
 import styles from "./Menu.module.scss";
+
+import messageImg from "../../public/image/Speech Bubble.svg";
+import basketImg from "../../public/image/Basket.svg";
+import aboutImg from "../../public/image/About.svg";
 
 const Menu: React.FC = () => {
   return (
     <div className={styles.menu_wrapper}>
       <a href="#">
-        <img src="image/Speech Bubble.svg" alt="message" />
+        <Image src={messageImg} alt="message" />
       </a>
       <a href="#" className={styles.basket_btn}>
-        <img src="image/Basket.svg" alt="basket" />
+        <span>1</span>
+        <Image src={basketImg} alt="basket" />
       </a>
       <a href="#">
-        <img src="image/About.svg" alt="about" />
+        <Image src={aboutImg} alt="about" />
       </a>
     </div>
   );
