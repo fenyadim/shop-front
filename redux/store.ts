@@ -1,13 +1,16 @@
-import { configureStore } from "@reduxjs/toolkit";
-import basketReducer from "@/redux/basketSlice";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import productReducer from "@/redux/basketSlice";
 
-export const store = configureStore({
-  reducer: {
-    basket: basketReducer,
-  },
+const combinedReducer = combineReducers({
+  products: productReducer,
 });
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
+const store = configureStore({
+  reducer: combinedReducer,
+});
+
+export default store;
+
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+
 export type AppDispatch = typeof store.dispatch;

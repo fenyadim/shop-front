@@ -1,18 +1,23 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Tab from "@/components/Tab";
+import { ISimpleFetchingData } from "@/@types";
 
 import styles from "./Header.module.scss";
 
+interface ITabs extends ISimpleFetchingData {
+  subcategories: ISimpleFetchingData[];
+}
+
 const Header: React.FC = () => {
-  const [tabs, setTabs] = React.useState([]);
-  const [subTabs, setSubTabs] = React.useState([]);
+  const [tabs, setTabs] = React.useState<ITabs[] | []>([]);
+  const [subTabs, setSubTabs] = React.useState<ISimpleFetchingData[] | []>([]);
   const { query } = useRouter();
 
   React.useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
-        "http://127.0.0.1:1337/api/categoriesp?populate[0]=subcategories"
+        `${process.env.URL_BACK}/api/categoriesp?populate[0]=subcategories`
       );
       const { data } = await res.json();
       setTabs(data);
@@ -21,9 +26,9 @@ const Header: React.FC = () => {
   }, []);
 
   React.useEffect(() => {
-    tabs.map(({ attributes }) => {
-      if (attributes.slug === query.category) {
-        setSubTabs(attributes.subcategories.data);
+    tabs.map(({ slug, subcategories }) => {
+      if (slug === query.category) {
+        setSubTabs(subcategories);
       }
     });
   }, [query.category, tabs]);

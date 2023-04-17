@@ -1,103 +1,28 @@
-import React from "react";
-import styles from "./ProductsWrapper.module.scss";
+import React, { useEffect } from "react";
 import ProductItem from "@/components/ProductItem";
+import { IBasket, IProductsData } from "@/@types";
 
-interface IProductsData {
-  products: [
-    {
-      attributes: {
-        desc: string;
-        image: {
-          data: {
-            attributes: {
-              url: string;
-            };
-          };
-        };
-        name: string;
-        price: number;
-        slug: string;
-        volume: number;
-      };
-    }
-  ];
-}
+import styles from "./ProductsWrapper.module.scss";
 
 const ProductsWrapper: React.FC<IProductsData> = ({ products }) => {
   return (
     <div className={styles.wrapper}>
-      {products ? (
-        products.map(({ attributes }) => (
-          <React.Fragment key={attributes.slug}>
+      {products.length !== 0 ? (
+        products.map(({ image, volume, name, slug, price, desc }) => (
+          <React.Fragment key={slug}>
             <ProductItem
-              slug={attributes.slug}
-              srcImg={`http://localhost:1337${attributes.image.data.attributes.url}`}
-              name={attributes.name}
+              slug={slug}
+              srcImg={image.url}
+              name={name}
               brand="Carslan"
-              volume={attributes.volume}
-              price={attributes.price}
+              volume={volume}
+              price={price}
             />
           </React.Fragment>
         ))
       ) : (
         <h1>Ничего нет!</h1>
       )}
-      <ProductItem
-        slug="test"
-        srcImg="image/product.png"
-        name="Lasting Cover Foundation"
-        brand="Carslan"
-        volume={30}
-        price={2781}
-      />
-      <ProductItem
-        slug="test1"
-        srcImg="image/product.png"
-        name="Lasting Cover Foundation Lasting Cover Foundation"
-        brand="Carslan"
-        volume={30}
-        price={2781}
-      />
-      <ProductItem
-        slug="test2"
-        srcImg="image/product.png"
-        name="Lasting Cover Foundation"
-        brand="Carslan"
-        volume={30}
-        price={2781}
-      />
-      <ProductItem
-        slug="test3"
-        srcImg="image/product.png"
-        name="Lasting Cover Foundation"
-        brand="Carslan"
-        volume={30}
-        price={2781}
-      />
-      <ProductItem
-        slug="test4"
-        srcImg="image/product.png"
-        name="Lasting Cover Foundation"
-        brand="Carslan"
-        volume={30}
-        price={2781}
-      />
-      <ProductItem
-        slug="test5"
-        srcImg="image/product.png"
-        name="Lasting Cover Foundation"
-        brand="Carslan"
-        volume={30}
-        price={2781}
-      />
-      <ProductItem
-        slug="test6"
-        srcImg="image/product.png"
-        name="Lasting Cover Foundation"
-        brand="Carslan"
-        volume={30}
-        price={2781}
-      />
     </div>
   );
 };

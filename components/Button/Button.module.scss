@@ -1,14 +1,52 @@
 .button_wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 6px 10px;
   border-radius: 20px;
   background: var(--accent);
   cursor: pointer;
-
   p {
     font-size: 10px;
+  }
+
+  .price_title {
     margin-right: 10px;
+  }
+}
+
+.button_active {
+  background: var(--accent-dark);
+  width: 86px;
+  button {
+    position: relative;
+    background: none;
+    border: none;
+    width: 8px;
+    height: 8px;
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      border-top: 1px solid var(--black);
+      width: 100%;
+      height: 1px;
+      transform: translateY(-0.5px);
+    }
+  }
+  .plus {
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      border-left: 1px solid var(--black);
+      width: 1px;
+      height: 100%;
+      transform: translateX(-0.5px);
+    }
   }
 }

@@ -1,87 +1,69 @@
 import React from "react";
 import Image from "next/image";
+import cn from "classnames";
 import styles from "./Button.module.scss";
 
 import cartImg from "../../public/image/cart.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
-import { ADD_PRODUCT } from "@/redux/basketSlice";
+import {
+  ADD_PRODUCT,
+  DECREASE_PRODUCT,
+  DELETE_PRODUCT,
+  getBasket,
+  IBasketData,
+  INCREASE_PRODUCT,
+} from "@/redux/basketSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
-interface IState {
-  productSlug: string;
-  count: number;
-}
+const Button: React.FC<{
+  price: number;
+  slug: string;
+}> = ({ price, slug }) => {
+  const [inBasket, setInBasket] = React.useState<boolean>(false);
+  const [count, setCount] = React.useState<number>(1);
+  const state: IBasketData[] = useAppSelector(getBasket);
+  const dispatch = useAppDispatch();
 
-function reducer(state: IState[], action) {
-  const { type, payload } = action;
-
-  switch (type) {
-    case "addProduct":
-      return [...state, { productSlug: payload, count: 1 }];
-
-    case "incProduct": {
-      return state.map((products, index) => {
-        if (products.productSlug === payload) {
-          return {
-            ...products,
-            count: products.count + 1,
-          };
-        } else {
-          return products;
-        }
-      });
+  React.useEffect(() => {
+    console.log(state);
+    const find = state.find((elem) => {
+      if (elem.slug === slug) {
+        return elem;
+      }
+    });
+    if (find) {
+      setInBasket(true);
+      setCount(find.count);
+    } else {
+      setInBasket(false);
     }
+  }, [state]);
 
-    case "decProduct":
-      return state.map((products, index) => {
-        if (products.productSlug === payload) {
-          if (products.count > 0) {
-            return {
-              ...products,
-              count: products.count - 1,
-            };
-          } else {
-            return {
-              ...products,
-              count: 0,
-            };
-          }
-        } else {
-          return products;
-        }
-      });
-
-    default:
-      return state;
-  }
-}
-
-const Button: React.FC<{ price: number; slug: string; onBasket: boolean }> = ({
-  price,
-  slug,
-  onBasket,
-}) => {
-  const dispatch = useDispatch();
+  const onClickMinus = () => {
+    if (count > 1) {
+      dispatch(DECREASE_PRODUCT(slug));
+    } else {
+      dispatch(DELETE_PRODUCT(slug));
+    }
+  };
 
   return (
     <>
-      {!onBasket ? (
+      {!inBasket ? (
         <div
           className={styles.button_wrapper}
-          onClick={() => dispatch({ type: ADD_PRODUCT, payload: slug })}
+          onClick={() => dispatch(ADD_PRODUCT(slug))}
         >
-          <p>{price} руб.</p>
+          <p className={styles.price_title}>{price} руб.</p>
           <Image src={cartImg} alt="Cart" width={13} height={13} />
         </div>
       ) : (
-        <div className={styles.button_wrapper}>
-          <button>-</button>
-          <p>1</p>
+        <div className={cn(styles.button_wrapper, styles.button_active)}>
           <button
-            onClick={() => dispatch({ type: "incProduct", payload: slug })}
-          >
-            +
-          </button>
+            className={styles.plus}
+            onClick={() => dispatch(INCREASE_PRODUCT(slug))}
+          />
+          <p>{count}</p>
+          <button onClick={onClickMinus} />
         </div>
       )}
     </>

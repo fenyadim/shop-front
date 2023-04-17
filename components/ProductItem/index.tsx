@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./ProductItem.module.scss";
 import Button from "@/components/Button";
-import {useSelector} from "react-redux";
-import {RootState} from "@/redux/store";
+import Image from "next/image";
 
 interface IProduct {
   slug: string;
@@ -14,38 +13,32 @@ interface IProduct {
 }
 
 const ProductItem: React.FC<IProduct> = ({
-                                           slug,
-                                           price,
-                                           srcImg,
-                                           volume,
-                                           brand,
-                                           name,
-                                         }) => {
-  const [onBasket, setOnBasket] = React.useState(false);
-  const state = useSelector((state: RootState) => state.basket);
-
-  React.useEffect(() => {
-    state.map(({productSlug}) => {
-      if (productSlug === slug) {
-        setOnBasket(true);
-      } else {
-        setOnBasket(false);
-      }
-    });
-  }, [state]);
-
+  slug,
+  price,
+  srcImg,
+  volume,
+  brand,
+  name,
+}) => {
   return (
-      <div className={styles.card}>
-        <img className={styles.product_img} src={srcImg} alt="image"/>
-        <div className={styles.info_wrapper}>
-          <h3 className={styles.brand_name}>{brand}</h3>
-          <h2 className={styles.product_name}>{name}</h2>
-          <div className={styles.info_bottom}>
-            <p className={styles.volume}>Объем: {volume}ml</p>
-            <Button price={price} slug={slug} onBasket={onBasket}/>
-          </div>
+    <div className={styles.card}>
+      <Image
+        className={styles.product_img}
+        src={`${process.env.URL_BACK}${srcImg}`}
+        alt={name}
+        unoptimized
+        fill
+        style={{ objectFit: "cover" }}
+      />
+      <div className={styles.info_wrapper}>
+        <h3 className={styles.brand_name}>{brand}</h3>
+        <h2 className={styles.product_name}>{name}</h2>
+        <div className={styles.info_bottom}>
+          <p className={styles.volume}>Объем: {volume}ml</p>
+          <Button price={price} slug={slug} />
         </div>
       </div>
+    </div>
   );
 };
 
