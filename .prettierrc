@@ -6,11 +6,12 @@
 	"singleQuote": true,
 	"importOrder": [
 		"<THIRD_PARTY_MODULES>",
-		"^@/components/(.*)$",
+		"^@/components$",
 		"^@/redux/(.*)$",
 		"^@/services/(.*)$",
 		"^@/utils/(.*)$",
-		"^@types/(.*)$",
+		"^@/@types/(.*)$",
+		"^@/@types$",
 		"^../(.*)",
 		"^./(.*)",
 		"(.scss)$"

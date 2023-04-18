@@ -1,8 +1,11 @@
-import "@/styles/global.css";
-import type { AppProps } from "next/app";
-import { Provider } from "react-redux";
-import Layout from "@/components/Layout/Layout";
-import store from "@/redux/store";
+import type { AppProps } from 'next/app'
+import { Provider } from 'react-redux'
+
+import Layout from '@/components/Layout/Layout'
+
+import store from '@/redux/store'
+
+import '@/styles/global.css'
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
@@ -11,7 +14,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <Component {...pageProps} />
       </Layout>
     </Provider>
-  );
-};
+  )
+}
 
-export default App;
+export default App
