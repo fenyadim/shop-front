@@ -3,14 +3,13 @@ import Image from "next/image";
 import cn from "classnames";
 import styles from "./Button.module.scss";
 
-import cartImg from "../../public/image/cart.svg";
 import {
   ADD_PRODUCT,
   DECREASE_PRODUCT,
   DELETE_PRODUCT,
+  INCREASE_PRODUCT,
   getBasket,
   IBasketData,
-  INCREASE_PRODUCT,
 } from "@/redux/basketSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
@@ -24,7 +23,6 @@ const Button: React.FC<{
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {
-    console.log(state);
     const find = state.find((elem) => {
       if (elem.slug === slug) {
         return elem;
@@ -36,7 +34,7 @@ const Button: React.FC<{
     } else {
       setInBasket(false);
     }
-  }, [state]);
+  }, [slug, state]);
 
   const onClickMinus = () => {
     if (count > 1) {
@@ -54,7 +52,7 @@ const Button: React.FC<{
           onClick={() => dispatch(ADD_PRODUCT(slug))}
         >
           <p className={styles.price_title}>{price} руб.</p>
-          <Image src={cartImg} alt="Cart" width={13} height={13} />
+          <Image src="/image/Basket.svg" alt="Cart" width={13} height={13} />
         </div>
       ) : (
         <div className={cn(styles.button_wrapper, styles.button_active)}>

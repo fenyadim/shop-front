@@ -1,11 +1,10 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import Head from "next/head";
 import localFont from "next/font/local";
-import { getBasket, IBasketData } from "@/redux/basketSlice";
-import { useAppSelector } from "@/redux/hooks";
 import cn from "classnames";
-import Header from "@/components/Header";
-import Menu from "@/components/Menu";
+import { Header, Menu } from "@/components";
+import { IState } from "@/redux/basketSlice";
+import { useAppSelector } from "@/redux/hooks";
 
 import styles from "./Layout.module.scss";
 
@@ -29,8 +28,8 @@ const jostFont = localFont({
   ],
 });
 
-const Layout: React.FC = ({ children }) => {
-  const state: IBasketData[] = useAppSelector((state) => state.products);
+const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const state: IState = useAppSelector((state) => state.products);
   const isMounted = React.useRef(false);
 
   React.useEffect(() => {

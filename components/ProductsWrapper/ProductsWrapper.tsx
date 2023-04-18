@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import ProductItem from "@/components/ProductItem";
-import { IBasket, IProductsData } from "@/@types";
+import { ProductItem } from "@/components";
+import { IProductsData } from "@/@types";
 
 import styles from "./ProductsWrapper.module.scss";
 

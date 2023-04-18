@@ -8,6 +8,11 @@ export interface IBasket {
   count: number;
 }
 
+export interface IQueryParam {
+  category?: string;
+  subcategory?: string;
+}
+
 export interface IProductsData {
   products: [
     {
@@ -19,6 +24,6 @@ export interface IProductsData {
       price: number;
       slug: string;
       volume: number;
-    }
+    },
   ];
 }

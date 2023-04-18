@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-import Tab from "@/components/Tab";
+import { Tab } from "@/components";
 import { ISimpleFetchingData } from "@/@types";
 
 import styles from "./Header.module.scss";
