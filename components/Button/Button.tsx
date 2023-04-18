@@ -7,8 +7,6 @@ import {
 	DECREASE_PRODUCT,
 	DELETE_PRODUCT,
 	IBasketData,
-	INCREASE_PRODUCT,
-	getBasket,
 } from '@/redux/basketSlice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 
@@ -18,27 +16,14 @@ const Button: React.FC<{
 	price: number
 	slug: string
 }> = ({ price, slug }) => {
-	const [inBasket, setInBasket] = React.useState<boolean>(false)
-	const [count, setCount] = React.useState<number>(1)
-	const state: IBasketData[] = useAppSelector(getBasket)
+	const findProduct: IBasketData | undefined = useAppSelector((state) =>
+		state.products.basket.find((obj) => obj.slug === slug)
+	)
 	const dispatch = useAppDispatch()
-
-	React.useEffect(() => {
-		const find = state.find((elem) => {
-			if (elem.slug === slug) {
-				return elem
-			}
-		})
-		if (find) {
-			setInBasket(true)
-			setCount(find.count)
-		} else {
-			setInBasket(false)
-		}
-	}, [slug, state])
+	const countProduct = findProduct ? findProduct.count : 0
 
 	const onClickMinus = () => {
-		if (count > 1) {
+		if (countProduct > 1) {
 			dispatch(DECREASE_PRODUCT(slug))
 		} else {
 			dispatch(DELETE_PRODUCT(slug))
@@ -47,21 +32,21 @@ const Button: React.FC<{
 
 	return (
 		<>
-			{!inBasket ? (
+			{countProduct < 1 ? (
 				<div
 					className={styles.button_wrapper}
-					onClick={() => dispatch(ADD_PRODUCT(slug))}
+					onClick={() => dispatch(ADD_PRODUCT({ slug, price }))}
 				>
 					<p className={styles.price_title}>{price} руб.</p>
-					<Image src="/image/Basket.svg" alt="Cart" width={13} height={13} />
+					<Image src="/image/cart.svg" alt="Cart" width={13} height={13} />
 				</div>
 			) : (
 				<div className={cn(styles.button_wrapper, styles.button_active)}>
 					<button
 						className={styles.plus}
-						onClick={() => dispatch(INCREASE_PRODUCT(slug))}
+						onClick={() => dispatch(ADD_PRODUCT({ slug, price }))}
 					/>
-					<p>{count}</p>
+					<p>{countProduct}</p>
 					<button onClick={onClickMinus} />
 				</div>
 			)}

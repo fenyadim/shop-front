@@ -1,30 +1,32 @@
-import React, { useEffect } from "react";
-import { ProductItem } from "@/components";
-import { IProductsData } from "@/@types";
+import React from 'react'
 
-import styles from "./ProductsWrapper.module.scss";
+import { ProductItem } from '@/components'
+
+import { IProductsData } from '@/@types'
+
+import styles from './ProductsWrapper.module.scss'
 
 const ProductsWrapper: React.FC<IProductsData> = ({ products }) => {
-  return (
-    <div className={styles.wrapper}>
-      {products.length ? (
-        products.map(({ image, volume, name, slug, price, desc }) => (
-          <React.Fragment key={slug}>
-            <ProductItem
-              slug={slug}
-              srcImg={image.url}
-              name={name}
-              brand="Carslan"
-              volume={volume}
-              price={price}
-            />
-          </React.Fragment>
-        ))
-      ) : (
-        <h1>Ничего нет!</h1>
-      )}
-    </div>
-  );
-};
+	return (
+		<div className={styles.wrapper}>
+			{products.length ? (
+				products.map(({ image, volume, name, slug, price, desc }) => (
+					<React.Fragment key={slug}>
+						<ProductItem
+							slug={slug}
+							srcImg={image.url}
+							name={name}
+							brand="Carslan"
+							volume={volume}
+							price={price}
+						/>
+					</React.Fragment>
+				))
+			) : (
+				<h1>Ничего нет!</h1>
+			)}
+		</div>
+	)
+}
 
-export default ProductsWrapper;
+export default ProductsWrapper

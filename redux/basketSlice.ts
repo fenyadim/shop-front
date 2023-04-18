@@ -1,62 +1,64 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '@/redux/store';
-import { getBasketFromLS } from '@/utils/getBasketFromLS';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+
+import { RootState } from '@/redux/store'
+
+import { calcTotalPrice } from '@/utils/calcTotalPrice'
+import { getBasketFromLS } from '@/utils/getBasketFromLS'
 
 export interface IBasketData {
-  slug: string;
-  count: number;
+	slug: string
+	price: number
+	count: number
 }
 
 export interface IState {
-  basket: IBasketData[] | [];
-  countTotal: number;
+	basket: IBasketData[] | []
+	priceTotal: number
 }
 
-const items = getBasketFromLS();
-
-console.log(items);
+const items = getBasketFromLS() as IState
 
 const initialState: IState = {
-  basket: items?.basket,
-  countTotal: items?.countTotal,
-};
-
-enum Operation {
-  plus,
-  minus,
+	basket: items.basket,
+	priceTotal: items.priceTotal,
 }
 
-const changeCount = (state: IState, { payload }: PayloadAction<string>, operation: Operation) => {
-  const basketItem = state.basket.find((item) => item.slug === payload) as IBasketData;
-  basketItem.count = operation === Operation.plus ? basketItem.count + 1 : basketItem.count - 1;
-};
-
 export const productSlice = createSlice({
-  name: 'products',
-  initialState,
-  reducers: {
-    ADD_PRODUCT: (state: IState, action: PayloadAction<string>) => {
-      return {
-        ...state,
-        basket: [...state.basket, { slug: action.payload, count: 1 }],
-        countTotal: state.countTotal + 1,
-      };
-    },
-    DELETE_PRODUCT: (state: IState, action: PayloadAction<string>) => {
-      state.basket = state.basket.filter((item) => item.slug !== action.payload);
-    },
-    INCREASE_PRODUCT: (state: IState, action: PayloadAction<string>) => {
-      changeCount(state, action, Operation.plus);
-    },
-    DECREASE_PRODUCT: (state: IState, action: PayloadAction<string>) => {
-      changeCount(state, action, Operation.minus);
-    },
-  },
-});
-export const { ADD_PRODUCT, DELETE_PRODUCT, INCREASE_PRODUCT, DECREASE_PRODUCT } =
-  productSlice.actions;
+	name: 'products',
+	initialState,
+	reducers: {
+		ADD_PRODUCT: (
+			state: IState,
+			{ payload }: PayloadAction<{ slug: string; price: number }>
+		) => {
+			const findItem = state.basket.find((obj) => obj.slug === payload.slug)
+			if (findItem) {
+				findItem.count++
+			} else {
+				return {
+					...state,
+					basket: [
+						...state.basket,
+						{ slug: payload.slug, price: payload.price, count: 1 },
+					],
+				}
+			}
+			state.priceTotal = calcTotalPrice(state.basket)
+		},
+		DELETE_PRODUCT: (state: IState, action: PayloadAction<string>) => {
+			state.basket = state.basket.filter((item) => item.slug !== action.payload)
+		},
+		DECREASE_PRODUCT: (state: IState, action: PayloadAction<string>) => {
+			const findItem = state.basket.find((obj) => obj.slug === action.payload)
+			if (findItem) {
+				findItem.count--
+			}
+		},
+	},
+})
+export const { ADD_PRODUCT, DELETE_PRODUCT, DECREASE_PRODUCT } =
+	productSlice.actions
 
-export const getBasket = (state: RootState) => state.products.basket;
-export const getTotalCount = (state: RootState) => state.products.countTotal;
+export const getBasket = (state: RootState) => state.products.basket
 
-export default productSlice.reducer;
+export default productSlice.reducer

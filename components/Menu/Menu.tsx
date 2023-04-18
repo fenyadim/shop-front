@@ -1,30 +1,33 @@
-import React from "react";
-import Image from "next/image";
-import { useSelector } from "react-redux";
-import { getTotalCount } from "@/redux/basketSlice";
+import Image from 'next/image'
+import React from 'react'
 
-import styles from "./Menu.module.scss";
-import messageImg from "../../public/image/Speech Bubble.svg";
-import basketImg from "../../public/image/Basket.svg";
-import aboutImg from "../../public/image/About.svg";
+import { IBasketData, getBasket } from '@/redux/basketSlice'
+import { useAppSelector } from '@/redux/hooks'
+
+import styles from './Menu.module.scss'
 
 const Menu: React.FC = () => {
-  const totalCount = useSelector(getTotalCount);
+	const basket = useAppSelector(getBasket)
 
-  return (
-    <div className={styles.menu_wrapper}>
-      <a href="#">
-        <Image src={messageImg} alt="message" />
-      </a>
-      <a href="#" className={styles.basket_btn}>
-        {totalCount > 0 && <span>{totalCount}</span>}
-        <Image src={basketImg} alt="basket" />
-      </a>
-      <a href="#">
-        <Image src={aboutImg} alt="about" />
-      </a>
-    </div>
-  );
-};
+	const totalCount: number = basket.reduce(
+		(sum: number, item: IBasketData) => sum + item.count,
+		0
+	)
 
-export default Menu;
+	return (
+		<div className={styles.menu_wrapper}>
+			<a href="#">
+				<Image src="/image/message.svg" alt="Message" width={26} height={26} />
+			</a>
+			<a href="#" className={styles.basket_btn}>
+				{totalCount > 0 && <span>{totalCount}</span>}
+				<Image src="/image/basket.svg" alt="Basket" width={26} height={26} />
+			</a>
+			<a href="#">
+				<Image src="/image/about.svg" alt="About" width={26} height={26} />
+			</a>
+		</div>
+	)
+}
+
+export default Menu

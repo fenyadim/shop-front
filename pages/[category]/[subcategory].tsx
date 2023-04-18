@@ -1,23 +1,24 @@
-import React from "react";
-import { GetServerSideProps, NextPage } from "next";
-import { IProductsData, IQueryParam } from "@/@types";
-import { ProductsWrapper } from "@/components";
+import { GetServerSideProps, NextPage } from 'next'
+import React from 'react'
+
+import { ProductsWrapper } from '@/components'
+
+import { productsService } from '@/services/products.service'
+
+import { IProductsData, IQueryParam } from '@/@types'
 
 const SubCategoryPage: NextPage<IProductsData> = ({ products }) => {
-  return <ProductsWrapper products={products} />;
-};
+	return <ProductsWrapper products={products} />
+}
 
-export default SubCategoryPage;
+export default SubCategoryPage
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { subcategory } = context.params as IQueryParam;
-
-  const res = await fetch(
-    `${process.env.URL_BACK}/api/subcategories?filters[slug][$containsi]=${subcategory}&populate[products][populate]=image`
-  );
-  const { data } = await res.json();
-
-  return {
-    props: { products: data[0].products },
-  };
-};
+	const { subcategory } = context.params as IQueryParam
+	const { data: products } = await productsService.fetchAllInSubCategory(
+		subcategory
+	)
+	return {
+		props: { products: products.data },
+	}
+}

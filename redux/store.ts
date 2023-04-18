@@ -1,16 +1,17 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import productReducer from "@/redux/basketSlice";
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
+
+import productReducer from '@/redux/basketSlice'
 
 const combinedReducer = combineReducers({
-  products: productReducer,
-});
+	products: productReducer,
+})
 
 const store = configureStore({
-  reducer: combinedReducer,
-});
+	reducer: combinedReducer,
+})
 
-export default store;
+export default store
 
-export type RootState = ReturnType<typeof store.getState>;
+export type RootState = ReturnType<typeof store.getState>
 
-export type AppDispatch = typeof store.dispatch;
+export type AppDispatch = typeof store.dispatch
