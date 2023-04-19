@@ -1,6 +1,5 @@
 import cn from 'classnames'
 import Image from 'next/image'
-import React from 'react'
 
 import {
 	ADD_PRODUCT,
