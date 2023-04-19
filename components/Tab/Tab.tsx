@@ -3,22 +3,26 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 
-import { ISimpleFetchingData } from '@/@types'
+import { ISimpleFetchingData, ITabs } from '@/@types'
 
 import styles from './Tab.module.scss'
 
-interface ITab {
-	categories: ISimpleFetchingData[]
+interface ITabsProps {
+	categories: ITabs[] | ISimpleFetchingData[] | undefined
 	isSubTab?: boolean
 	activeTab: string | string[] | undefined
 }
 
-const Tab: React.FC<ITab> = ({ categories, isSubTab = false, activeTab }) => {
+const Tab: React.FC<ITabsProps> = ({
+	categories,
+	isSubTab = false,
+	activeTab,
+}) => {
 	const { query } = useRouter()
 
 	return (
 		<ul className={styles.tab_wrapper}>
-			{categories.map(({ slug, title }, index) => (
+			{categories?.map(({ slug, title }, index) => (
 				<li
 					key={`${slug}_${index}`}
 					className={cn(styles.tab_item, {

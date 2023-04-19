@@ -19,8 +19,8 @@ export interface IState {
 const items = getBasketFromLS() as IState
 
 const initialState: IState = {
-	basket: items.basket,
-	priceTotal: items.priceTotal,
+	basket: [],
+	priceTotal: 0,
 }
 
 export const productSlice = createSlice({

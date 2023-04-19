@@ -1,3 +1,16 @@
 .header {
-  height: 150px;
+	height: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	padding-top: 35px;
+	& > * {
+		display: flex;
+		align-items: center;
+		overflow-y: scroll;
+		padding: 0 20px 20px 20px;
+	}
+	& > *:first-child {
+		transform: translateY(5px);
+	}
 }

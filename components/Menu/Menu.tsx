@@ -17,14 +17,32 @@ const Menu: React.FC = () => {
 	return (
 		<div className={styles.menu_wrapper}>
 			<a href="#">
-				<Image src="/image/message.svg" alt="Message" width={26} height={26} />
+				<Image
+					src="/image/message.svg"
+					alt="Message"
+					width={26}
+					height={26}
+					priority
+				/>
 			</a>
 			<Link href="/cart" className={styles.basket_btn}>
 				{totalCount > 0 && <span>{totalCount}</span>}
-				<Image src="/image/basket.svg" alt="Basket" width={26} height={26} />
+				<Image
+					src="/image/basket.svg"
+					alt="Basket"
+					width={26}
+					height={26}
+					priority
+				/>
 			</Link>
 			<a href="#">
-				<Image src="/image/about.svg" alt="About" width={26} height={26} />
+				<Image
+					src="/image/about.svg"
+					alt="About"
+					width={26}
+					height={26}
+					priority
+				/>
 			</a>
 		</div>
 	)

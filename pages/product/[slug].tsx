@@ -1,5 +1,10 @@
 import { NextPage } from 'next'
+import { useRouter } from 'next/router'
 
-export const SlugPage: NextPage = () => {
-	return <div>SlugPage</div>
+const SlugPage: NextPage = () => {
+	const { query } = useRouter()
+
+	return <div>{query.slug}</div>
 }
+
+export default SlugPage

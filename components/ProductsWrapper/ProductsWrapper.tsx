@@ -1,31 +1,38 @@
-import React from 'react'
+import { FC, Fragment } from 'react'
 
-import { ProductItem } from '@/components'
+import { Header, ProductItem } from '@/components'
 
 import { IProductsData } from '@/@types'
 
+import TabsWrapper from '../TabsWrapper/TabsWrapper'
+
 import styles from './ProductsWrapper.module.scss'
 
-const ProductsWrapper: React.FC<IProductsData> = ({ products }) => {
+const ProductsWrapper: FC<IProductsData> = ({ products, tabs }) => {
 	return (
-		<div className={styles.wrapper}>
-			{products.length ? (
-				products.map(({ image, volume, name, slug, price, desc }) => (
-					<React.Fragment key={slug}>
-						<ProductItem
-							slug={slug}
-							srcImg={image.url}
-							name={name}
-							brand="Carslan"
-							volume={volume}
-							price={price}
-						/>
-					</React.Fragment>
-				))
-			) : (
-				<h1>Ничего нет!</h1>
-			)}
-		</div>
+		<>
+			<Header>
+				<TabsWrapper tabs={tabs} />
+			</Header>
+			<div className={styles.wrapper}>
+				{products.length ? (
+					products.map(({ image, volume, name, slug, price }) => (
+						<Fragment key={slug}>
+							<ProductItem
+								slug={slug}
+								srcImg={image.url}
+								name={name}
+								brand="Carslan"
+								volume={volume}
+								price={price}
+							/>
+						</Fragment>
+					))
+				) : (
+					<h1>Ничего нет!</h1>
+				)}
+			</div>
+		</>
 	)
 }
 

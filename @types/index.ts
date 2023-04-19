@@ -3,6 +3,10 @@ export interface ISimpleFetchingData {
 	slug: string
 }
 
+export interface ITabs extends ISimpleFetchingData {
+	subcategories: ISimpleFetchingData[]
+}
+
 export interface IBasket {
 	slug: string
 	count: number
@@ -14,6 +18,7 @@ export interface IQueryParam {
 }
 
 export interface IProductsData {
+	tabs: ITabs[]
 	products: [
 		{
 			desc: string

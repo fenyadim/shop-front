@@ -1,56 +1,60 @@
 .card {
-  position: relative;
-  display: block;
-  height: 250px;
-  border-radius: 20px;
-  overflow: hidden;
-  outline: 1px solid var(--grey);
-  background: #FFFFFF;
-  cursor: pointer;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.06);
-  transition: box-shadow 0.3s;
+	position: relative;
+	display: block;
+	height: 250px;
+	border-radius: 20px;
+	overflow: hidden;
+	outline: 1px solid var(--grey);
+	background: #ffffff;
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.06);
+	transition: box-shadow 0.3s;
 
-  &:hover {
-    box-shadow: none;
-  }
+	> a {
+		cursor: pointer;
+	}
 
-  .product_img {
-    width: 100%;
-  }
+	&:hover {
+		box-shadow: none;
+	}
+
+	.product_img {
+		width: 100%;
+		cursor: pointer;
+	}
 }
 
 .info_wrapper {
-  position: absolute;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  display: block;
-  background: white;
-  overflow: hidden;
-  border-radius: 20px;
-  padding: 7px 10px 10px 10px;
+	position: absolute;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	display: block;
+	background: white;
+	overflow: hidden;
+	border-radius: 20px;
+	padding: 7px 10px 10px 10px;
 
-  .brand_name {
-    font-size: 8px;
-    color: var(--grey-dark);
-    text-align: center;
-  }
+	.brand_name {
+		font-size: 8px;
+		color: var(--grey-dark);
+		text-align: center;
+	}
 
-  .product_name {
-    font-size: 12px;
-    font-weight: 600;
-    text-align: center;
-  }
+	.product_name {
+		font-size: 12px;
+		font-weight: 600;
+		text-align: center;
+	}
 
-  .info_bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 12px;
+	.info_bottom {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 12px;
 
-    .volume {
-      font-size: 8px;
-      color: var(--grey-dark);
-    }
-  }
+		.volume {
+			font-size: 8px;
+			color: var(--grey-dark);
+		}
+	}
 }

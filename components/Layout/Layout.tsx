@@ -51,7 +51,6 @@ const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<div className={cn(jostFont.className, styles.layout)}>
-				<Header />
 				<main>{children}</main>
 				<Menu />
 			</div>

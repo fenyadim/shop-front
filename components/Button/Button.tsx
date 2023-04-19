@@ -11,10 +11,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 
 import styles from './Button.module.scss'
 
-const Button: React.FC<{
-	price: number
-	slug: string
-}> = ({ price, slug }) => {
+const Button: React.FC<{ price: number; slug: string }> = ({ price, slug }) => {
 	const findProduct: IBasketData | undefined = useAppSelector((state) =>
 		state.products.basket.find((obj) => obj.slug === slug)
 	)

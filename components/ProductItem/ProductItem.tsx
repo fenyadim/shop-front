@@ -23,24 +23,29 @@ const ProductItem: React.FC<IProduct> = ({
 	name,
 }) => {
 	return (
-		<Link href={`/product/${slug}`} className={styles.card}>
-			<Image
-				className={styles.product_img}
-				src={`${process.env.URL_BACK}${srcImg}`}
-				alt={name}
-				unoptimized
-				fill
-				style={{ objectFit: 'cover' }}
-			/>
+		<div className={styles.card}>
+			<Link href={`/product/${slug}`}>
+				<Image
+					className={styles.product_img}
+					src={`${process.env.URL_BACK}${srcImg}`}
+					alt={name}
+					width={170}
+					height={185}
+					unoptimized
+					style={{ objectFit: 'cover', objectPosition: 'top' }}
+				/>
+			</Link>
 			<div className={styles.info_wrapper}>
-				<h3 className={styles.brand_name}>{brand}</h3>
-				<h2 className={styles.product_name}>{name}</h2>
+				<Link href={`/product/${slug}`}>
+					<h3 className={styles.brand_name}>{brand}</h3>
+					<h2 className={styles.product_name}>{name}</h2>
+				</Link>
 				<div className={styles.info_bottom}>
 					<p className={styles.volume}>Объем: {volume}ml</p>
 					<Button price={price} slug={slug} />
 				</div>
 			</div>
-		</Link>
+		</div>
 	)
 }
 
