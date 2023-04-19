@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { Button } from '@/components'
 
@@ -22,7 +23,7 @@ const ProductItem: React.FC<IProduct> = ({
 	name,
 }) => {
 	return (
-		<div className={styles.card}>
+		<Link href={`/product/${slug}`} className={styles.card}>
 			<Image
 				className={styles.product_img}
 				src={`${process.env.URL_BACK}${srcImg}`}
@@ -39,7 +40,7 @@ const ProductItem: React.FC<IProduct> = ({
 					<Button price={price} slug={slug} />
 				</div>
 			</div>
-		</div>
+		</Link>
 	)
 }
 
