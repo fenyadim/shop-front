@@ -12,7 +12,7 @@ export interface IBasketData {
 }
 
 export interface IState {
-	basket: IBasketData[] | []
+	basket: IBasketData[]
 	priceTotal: number
 }
 
@@ -35,13 +35,7 @@ export const productSlice = createSlice({
 			if (findItem) {
 				findItem.count++
 			} else {
-				return {
-					...state,
-					basket: [
-						...state.basket,
-						{ slug: payload.slug, price: payload.price, count: 1 },
-					],
-				}
+				state.basket.push({ ...payload, count: 1 })
 			}
 			state.priceTotal = calcTotalPrice(state.basket)
 		},

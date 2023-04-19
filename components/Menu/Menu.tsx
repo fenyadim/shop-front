@@ -9,8 +9,8 @@ import styles from './Menu.module.scss'
 const Menu: React.FC = () => {
 	const basket = useAppSelector(getBasket)
 
-	const totalCount: number = basket.reduce(
-		(sum: number, item: IBasketData) => sum + item.count,
+	const totalCount: number = (basket as IBasketData[]).reduce(
+		(sum, item) => sum + item.count,
 		0
 	)
 

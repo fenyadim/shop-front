@@ -1,5 +1,3 @@
-import { IState } from '@/redux/basketSlice'
-
 import { calcTotalPrice } from './calcTotalPrice'
 
 export const getBasketFromLS = () => {
