@@ -5,7 +5,7 @@ import React, { ReactNode } from 'react'
 
 import { Header, Menu } from '@/components'
 
-import { IState } from '@/redux/basketSlice'
+import { IBasketData, getBasket } from '@/redux/basketSlice'
 import { useAppSelector } from '@/redux/hooks'
 
 import styles from './Layout.module.scss'
@@ -31,18 +31,16 @@ const jostFont = localFont({
 })
 
 const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
-	const state: IState = useAppSelector((state) => state.products)
+	const basket: IBasketData[] = useAppSelector(getBasket)
 	const isMounted = React.useRef(false)
 
 	React.useEffect(() => {
 		if (isMounted) {
-			// const json = JSON.stringify(state);
-			// localStorage.setItem("basket", json);
-			const jsonBasket = JSON.stringify(state.basket)
+			const jsonBasket = JSON.stringify(basket)
 			localStorage.setItem('basket', jsonBasket)
 		}
 		isMounted.current = true
-	}, [state])
+	}, [basket])
 
 	return (
 		<>

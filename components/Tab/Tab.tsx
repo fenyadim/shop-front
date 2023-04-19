@@ -21,11 +21,10 @@ const Tab: React.FC<ITab> = ({ categories, isSubTab = false, activeTab }) => {
 			{categories.map(({ slug, title }, index) => (
 				<li
 					key={`${slug}_${index}`}
-					className={cn(
-						styles.tab_item,
-						!isSubTab && styles.big,
-						activeTab === slug && styles.active
-					)}
+					className={cn(styles.tab_item, {
+						[styles.big]: !isSubTab,
+						[styles.active]: activeTab === slug,
+					})}
 				>
 					<Link href={!isSubTab ? `/${slug}` : `/${query.category}/${slug}`}>
 						{title}
