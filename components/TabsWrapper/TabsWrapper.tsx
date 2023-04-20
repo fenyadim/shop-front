@@ -2,7 +2,7 @@ import { Tab } from '..'
 import { useRouter } from 'next/router'
 import { FC, useEffect, useState } from 'react'
 
-import { ISimpleFetchingData, ITabs } from '@/@types'
+import { ISimpleFetchingData, ITabs } from '@/types'
 
 import styles from './TabsWrapper.module.scss'
 

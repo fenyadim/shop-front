@@ -3,7 +3,7 @@ import { FC, Fragment } from 'react'
 
 import { LinkButton } from '@/components'
 
-import { ISimpleFetchingData, ITabs } from '@/@types'
+import { ISimpleFetchingData, ITabs } from '@/types'
 
 import styles from './Tab.module.scss'
 
