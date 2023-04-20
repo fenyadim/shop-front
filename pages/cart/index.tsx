@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 
-import Cart from '@/components/Cart/Cart'
+import { Cart } from '@/components'
 
 const CartPage: NextPage = () => {
 	return <Cart />

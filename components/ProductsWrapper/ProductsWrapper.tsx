@@ -1,26 +1,23 @@
 import { FC, Fragment } from 'react'
 
-import { Header, ProductItem } from '@/components'
-
-import { IProductsData } from '@/@types'
+import { ProductItem } from '@/components'
 
 import TabsWrapper from '../TabsWrapper/TabsWrapper'
 
 import styles from './ProductsWrapper.module.scss'
+import { IProductsData } from '@/types'
 
 const ProductsWrapper: FC<IProductsData> = ({ products, tabs }) => {
 	return (
 		<>
-			<Header>
-				<TabsWrapper tabs={tabs} />
-			</Header>
+			<TabsWrapper tabs={tabs} />
 			<div className={styles.wrapper}>
 				{products.length ? (
 					products.map(({ image, volume, name, slug, price }) => (
 						<Fragment key={slug}>
 							<ProductItem
 								slug={slug}
-								srcImg={image.url}
+								image={image}
 								name={name}
 								brand="Carslan"
 								volume={volume}

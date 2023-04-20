@@ -4,6 +4,8 @@ import { FC, useEffect, useState } from 'react'
 
 import { ISimpleFetchingData, ITabs } from '@/@types'
 
+import styles from './TabsWrapper.module.scss'
+
 const TabsWrapper: FC<{ tabs: ITabs[] }> = ({ tabs }) => {
 	const [subTabs, setSubTabs] = useState<
 		ISimpleFetchingData[] | [] | undefined
@@ -16,10 +18,10 @@ const TabsWrapper: FC<{ tabs: ITabs[] }> = ({ tabs }) => {
 	}, [tabs, query.category])
 
 	return (
-		<>
+		<div className={styles.tabs_wrapper}>
 			<Tab categories={tabs} activeTab={query.category} />
 			<Tab categories={subTabs} activeTab={query.subcategory} isSubTab />
-		</>
+		</div>
 	)
 }
 

@@ -1,48 +1,71 @@
+import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
+import { FC } from 'react'
 
 import { Button } from '@/components'
 
-import styles from './ProductItem.module.scss'
+import { ADD_PRODUCT, DECREASE_PRODUCT, IBasketData } from '@/redux/basketSlice'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 
-interface IProduct {
-	slug: string
-	srcImg: string
-	name: string
-	brand: string
-	volume: number
-	price: number
+import styles from './ProductItem.module.scss'
+import { IProduct } from '@/types'
+
+interface IProductItem extends IProduct {
+	isHorizont?: boolean
 }
 
-const ProductItem: React.FC<IProduct> = ({
-	slug,
-	price,
-	srcImg,
-	volume,
-	brand,
-	name,
-}) => {
+const ProductItem: FC<IProductItem> = (props) => {
+	const { slug, image, volume, brand, name, price, isHorizont = false } = props
+
+	const findProduct: IBasketData | undefined = useAppSelector((state) =>
+		state.products.basket.find((obj) => obj.slug === slug)
+	)
+	const dispatch = useAppDispatch()
+	const countProduct = findProduct ? findProduct.count : 0
+
+	const addProduct = () => {
+		dispatch(ADD_PRODUCT(props))
+	}
+
+	const decreaseProduct = () => {
+		dispatch(DECREASE_PRODUCT(slug))
+	}
+
 	return (
-		<div className={styles.card}>
+		<div
+			className={cn(
+				{ [styles.horizontal]: isHorizont, [styles.vertical]: !isHorizont },
+				styles.card
+			)}
+		>
 			<Link href={`/product/${slug}`}>
 				<Image
 					className={styles.product_img}
-					src={`${process.env.URL_BACK}${srcImg}`}
+					src={`${process.env.URL_BACK}${image.url}`}
 					alt={name}
-					width={170}
-					height={185}
+					width={isHorizont ? 100 : 170}
+					height={isHorizont ? 100 : 185}
 					unoptimized
 					style={{ objectFit: 'cover', objectPosition: 'top' }}
 				/>
 			</Link>
 			<div className={styles.info_wrapper}>
 				<Link href={`/product/${slug}`}>
-					<h3 className={styles.brand_name}>{brand}</h3>
+					<h3 className={styles.product_brand}>{brand}</h3>
 					<h2 className={styles.product_name}>{name}</h2>
 				</Link>
 				<div className={styles.info_bottom}>
-					<p className={styles.volume}>Объем: {volume}ml</p>
-					<Button price={price} slug={slug} />
+					{!isHorizont && <p className={styles.volume}>Объем: {volume}ml</p>}
+					<Button
+						price={price}
+						count={countProduct}
+						addProduct={addProduct}
+						decreaseProduct={decreaseProduct}
+					/>
+					{isHorizont && (
+						<p className={styles.price}>{price * countProduct} руб.</p>
+					)}
 				</div>
 			</div>
 		</div>

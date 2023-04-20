@@ -1,7 +1,7 @@
-import cn from 'classnames'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React from 'react'
+import { FC, Fragment } from 'react'
+
+import { LinkButton } from '@/components'
 
 import { ISimpleFetchingData, ITabs } from '@/@types'
 
@@ -13,29 +13,22 @@ interface ITabsProps {
 	activeTab: string | string[] | undefined
 }
 
-const Tab: React.FC<ITabsProps> = ({
-	categories,
-	isSubTab = false,
-	activeTab,
-}) => {
+const Tab: FC<ITabsProps> = ({ categories, isSubTab = false, activeTab }) => {
 	const { query } = useRouter()
 
 	return (
-		<ul className={styles.tab_wrapper}>
-			{categories?.map(({ slug, title }, index) => (
-				<li
-					key={`${slug}_${index}`}
-					className={cn(styles.tab_item, {
-						[styles.big]: !isSubTab,
-						[styles.active]: activeTab === slug,
-					})}
-				>
-					<Link href={!isSubTab ? `/${slug}` : `/${query.category}/${slug}`}>
-						{title}
-					</Link>
-				</li>
+		<div className={styles.tabs}>
+			{categories?.map(({ slug, title }) => (
+				<Fragment key={slug}>
+					<LinkButton
+						href={!isSubTab ? `/${slug}` : `/${query.category}/${slug}`}
+						title={title}
+						isBig={!isSubTab}
+						isBordered={activeTab === slug}
+					/>
+				</Fragment>
 			))}
-		</ul>
+		</div>
 	)
 }
 

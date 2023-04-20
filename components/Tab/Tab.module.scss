@@ -1,36 +1,12 @@
-.tab_item {
+$transformX: translateX(-20px);
+
+.tabs {
 	display: flex;
-	align-items: center;
-	margin-right: 15px;
-	height: 32px;
-
-	a {
-		white-space: nowrap;
-		font-size: 16px;
-		color: var(--grey-dark);
-	}
-
+	padding: 0 20px 20px 20px;
+	transform: $transformX;
+	width: 100vw;
+	overflow-y: hidden;
 	&:last-child {
-		margin-right: 0;
-	}
-}
-
-.big {
-	height: 38px;
-	a {
-		font-size: 20px;
-	}
-}
-
-.active {
-	background: #fff;
-	border: 1px solid var(--grey);
-	border-radius: 20px;
-	padding: 3.5px 20px;
-	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.06);
-
-	a {
-		color: var(--black);
-		font-weight: 500;
+		transform: $transformX translateY(-5px);
 	}
 }

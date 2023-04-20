@@ -1,16 +1,17 @@
 .header {
-	height: 150px;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
 	padding-top: 35px;
-	& > * {
-		display: flex;
-		align-items: center;
-		overflow-y: scroll;
-		padding: 0 20px 20px 20px;
+	margin-bottom: 30px;
+	.header_title {
+		font-size: 32px;
+		font-weight: 500;
+		color: var(--grey-dark);
 	}
-	& > *:first-child {
-		transform: translateY(5px);
+	.header_nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-top: 20px;
 	}
 }

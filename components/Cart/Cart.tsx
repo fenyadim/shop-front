@@ -1,34 +1,112 @@
-import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { Fragment } from 'react'
+import { FC, Fragment } from 'react'
+import { useForm } from 'react-hook-form'
 
-import { Header } from '@/components'
+import { Header, Input, ProductItem } from '@/components'
 
 import { useAppSelector } from '@/redux/hooks'
 
+import { nameReg, phoneReg } from '../Input/regular'
+
 import styles from './Cart.module.scss'
 
-const Cart = () => {
+interface FormValues {
+	phone: string
+	name: string
+	city: string
+	street: string
+	house: string
+	apartment: string
+}
+
+const Cart: FC = () => {
 	const { basket, priceTotal } = useAppSelector((state) => state.products)
 	const route = useRouter()
 
+	const {
+		register,
+		handleSubmit,
+		formState: { isValid, errors },
+		reset,
+	} = useForm<FormValues>({
+		mode: 'onChange',
+	})
+
+	const submit = (e: SubmitEvent) => {
+		e.preventDefault()
+		console.log(e)
+	}
+
 	return (
 		<>
-			<Header>
-				<h1>Корзина</h1>
-				<div>
-					<Link href={'/kosmetika'}>Назад</Link>
-					<h1>Итого: {priceTotal}</h1>
-				</div>
+			<Header title={'Корзина'}>
+				<h2 className={styles.total_sum}>Итого: {priceTotal} руб.</h2>
 			</Header>
+			<div className={styles.basket_wrapper}>
+				{basket.length ? (
+					basket.map(({ brand, volume, slug, price, name, image }) => (
+						<Fragment key={slug}>
+							<ProductItem
+								slug={slug}
+								image={image}
+								name={name}
+								brand="Carslan"
+								volume={volume}
+								price={price}
+								isHorizont
+							/>
+						</Fragment>
+					))
+				) : (
+					<h2>В корзине пусто!</h2>
+				)}
+			</div>
 			<div>
-				{basket.map(({ slug, price, count }) => (
-					<Fragment key={slug}>
-						<h1>{slug}</h1>
-						<h3>{price}</h3>
-						<h4>{count}</h4>
-					</Fragment>
-				))}
+				<form onSubmit={handleSubmit(submit)} method="post">
+					<Input
+						{...register('phone', {
+							required: 'Введите телефон',
+							pattern: {
+								value: phoneReg,
+								message: 'Введите корректный номер',
+							},
+						})}
+						placeholder="Телефон"
+						error={errors.phone}
+					/>
+					<Input
+						{...register('name', {
+							required: true,
+							pattern: {
+								value: nameReg,
+								message: 'Введите ФИО',
+							},
+						})}
+						placeholder="ФИО"
+						error={errors.name}
+					/>
+					<Input
+						{...register('city', { required: 'Введите город/поселок' })}
+						placeholder="Город/Поселок"
+						error={errors.city}
+					/>
+					<Input
+						{...register('street', {})}
+						placeholder="Улица"
+						error={errors.street}
+					/>
+					<Input
+						{...register('house', { required: 'Введите дом' })}
+						placeholder="Дом"
+						error={errors.house}
+					/>
+					<Input
+						{...register('apartment', { required: 'Введите квартиру' })}
+						placeholder="Квартира"
+						error={errors.apartment}
+					/>
+					<button type="submit">Оформить заказ</button>
+				</form>
 			</div>
 		</>
 	)

@@ -10,5 +10,8 @@ export const ProductsWrapper = dynamic(
 	}
 )
 export const Tab = dynamic(() => import('./Tab/Tab'))
+export const Cart = dynamic(() => import('./Cart/Cart'))
 export { default as ProductItem } from './ProductItem/ProductItem'
 export { default as Button } from './Button/Button'
+export { default as LinkButton } from './LinkButton/LinkButton'
+export { default as Input } from './Input/Input'
