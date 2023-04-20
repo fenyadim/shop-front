@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 
-import { ISimpleFetchingData, ITabs } from '@/@types'
+import { ISimpleFetchingData, ITabs } from '@/types'
 
 import styles from './Tab.module.scss'
 

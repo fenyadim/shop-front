@@ -3,7 +3,7 @@ import localFont from 'next/font/local'
 import Head from 'next/head'
 import React, { ReactNode } from 'react'
 
-import { Header, Menu } from '@/components'
+import { Menu } from '@/components'
 
 import { IBasketData, getBasket } from '@/redux/basketSlice'
 import { useAppSelector } from '@/redux/hooks'

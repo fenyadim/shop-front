@@ -1,10 +1,8 @@
 import { FC, Fragment } from 'react'
 
-import { Header, ProductItem } from '@/components'
+import { Header, ProductItem, TabsWrapper } from '@/components'
 
-import { IProductsData } from '@/@types'
-
-import TabsWrapper from '../TabsWrapper/TabsWrapper'
+import { IProductsData } from '@/types'
 
 import styles from './ProductsWrapper.module.scss'
 
