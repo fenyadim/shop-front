@@ -1,14 +1,15 @@
 import cn from 'classnames'
-import Link from 'next/link'
-import { FC } from 'react'
+import { useRouter } from 'next/router'
+import { ButtonHTMLAttributes, FC } from 'react'
 
 import styles from './LinkButton.module.scss'
 
-interface ILinkButton {
+interface ILinkButton extends ButtonHTMLAttributes<HTMLButtonElement> {
 	title: string
-	href: string
+	href?: string
 	isBig?: boolean
 	isBordered?: boolean
+	styleBtn?: 'border' | 'accent' | 'clear'
 }
 
 const LinkButton: FC<ILinkButton> = ({
@@ -16,17 +17,24 @@ const LinkButton: FC<ILinkButton> = ({
 	href,
 	isBig = false,
 	isBordered = true,
+	styleBtn = 'border',
+	...rest
 }) => {
+	const { push } = useRouter()
+
 	return (
-		<Link
-			href={href}
+		<button
+			onClick={() => href && push(href)}
 			className={cn(styles.button_link, {
 				[styles.big]: isBig,
 				[styles.active]: isBordered,
+				[styles.accent]: styleBtn === 'accent',
+				[styles.clear]: styleBtn === 'clear',
 			})}
+			{...rest}
 		>
 			{title}
-		</Link>
+		</button>
 	)
 }
 

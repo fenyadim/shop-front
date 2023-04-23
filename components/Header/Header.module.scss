@@ -1,12 +1,12 @@
 .header {
 	display: flex;
 	flex-direction: column;
-	padding-top: 35px;
+	padding: 35px 20px 0 20px;
 	margin-bottom: 30px;
 	.header_title {
 		font-size: 32px;
 		font-weight: 500;
-		color: var(--grey-dark);
+		color: var(--grey-400);
 	}
 	.header_nav {
 		display: flex;

@@ -1,6 +1,8 @@
 import cn from 'classnames'
 import localFont from 'next/font/local'
 import { FC, PropsWithChildren } from 'react'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import { Menu } from '@/components'
 
@@ -29,6 +31,7 @@ const jostFont = localFont({
 const Layout: FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<>
+			<ToastContainer />
 			<div className={cn(jostFont.className, styles.layout)}>
 				{children}
 				<Menu />

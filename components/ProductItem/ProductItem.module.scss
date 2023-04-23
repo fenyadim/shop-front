@@ -28,7 +28,7 @@
 	overflow: hidden;
 
 	.product_brand {
-		color: var(--grey-dark);
+		color: var(--grey-400);
 		text-align: center;
 	}
 
@@ -45,7 +45,7 @@
 
 		.volume {
 			font-size: 8px;
-			color: var(--grey-dark);
+			color: var(--grey-400);
 		}
 	}
 	.price {
@@ -56,8 +56,9 @@
 
 .horizontal {
 	height: 100px;
+	max-width: 400px;
 	.info_wrapper {
-		width: 275px;
+		width: 75%;
 		right: 0;
 		top: 0;
 		bottom: 0;

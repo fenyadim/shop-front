@@ -1,18 +1,60 @@
 .field {
-	width: 250px;
+	position: relative;
 	margin-bottom: 20px;
 
-	span {
-		margin-left: 12px;
-		font-size: 15px;
-		margin-bottom: 5px;
+	&:target {
+		input {
+			height: 100px;
+		}
 	}
+
 	input {
 		border: none;
 		outline: 1px solid var(--grey);
 		border-radius: 20px;
 		height: 30px;
+		width: 100%;
 		padding: 5px 18px 5px 18px;
 		font-size: 14px;
+		transition: outline-color 0.1s;
+
+		&:hover {
+			outline-color: var(--grey-400);
+		}
+
+		&:focus {
+			outline-color: var(--grey-600);
+		}
+	}
+
+	.label {
+		z-index: 1;
+		position: absolute;
+		top: -11px;
+		left: 20px;
+		font-size: 12px;
+		background: linear-gradient(
+			to bottom,
+			var(--background) 0%,
+			var(--background) 45%,
+			#ffffff 100%
+		);
+	}
+}
+
+.error_text {
+	display: block;
+	font-size: 12px;
+}
+
+.error {
+	> input {
+		outline-color: var(--red);
+		&:focus {
+			outline-color: var(--red);
+		}
+	}
+	> span {
+		color: var(--red);
 	}
 }

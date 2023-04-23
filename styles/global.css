@@ -8,14 +8,22 @@
 	list-style-type: none;
 }
 
+button,
+input {
+	font-family: __jostFont_d32898, __jostFont_Fallback_d32898;
+}
+
 body {
-	background: #f8f8f8;
+	background: var(--background);
 }
 
 :root {
 	--accent: #ffeed3;
 	--accent-dark: #ffc979;
 	--grey: #e9e9e9;
-	--grey-dark: #cfcfcf;
+	--grey-400: #cfcfcf;
+	--grey-600: #757575;
 	--black: #1e1e1e;
+	--red: #ff6060;
+	--background: #f8f8f8;
 }

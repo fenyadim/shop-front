@@ -26,13 +26,13 @@ const ProductsWrapper: FC<IProductsData> = ({ products, tabs }) => {
 			<TabsWrapper tabs={tabs} />
 			<div className={styles.wrapper}>
 				{products.length ? (
-					products.map(({ image, volume, name, slug, price }) => (
+					products.map(({ image, volume, name, slug, price, brand }) => (
 						<Fragment key={slug}>
 							<ProductItem
 								slug={slug}
 								image={image}
 								name={name}
-								brand="Carslan"
+								brand={brand}
 								volume={volume}
 								price={price}
 							/>

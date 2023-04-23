@@ -1,9 +1,8 @@
 .wrapper {
-  display: grid;
-  gap: 15px;
-  grid-template-columns: repeat(auto-fit, 170px);
-  justify-content: center;
-  height: 70vh;
-  padding: 10px 0;
-  overflow-y: scroll;
+	display: grid;
+	gap: 15px;
+	grid-template-columns: repeat(auto-fit, 170px);
+	justify-content: center;
+	padding: 10px 0;
+	overflow-y: scroll;
 }

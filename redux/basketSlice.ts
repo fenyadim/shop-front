@@ -11,14 +11,14 @@ export interface IBasketData extends IProduct {
 	count: number
 }
 
-export interface IState {
+export interface IStateRedux {
 	basket: IBasketData[]
 	priceTotal: number
 }
 
-const items = getBasketFromLS() as IState
+const items = getBasketFromLS() as IStateRedux
 
-const initialState: IState = {
+const initialState: IStateRedux = {
 	basket: [],
 	priceTotal: 0,
 }
@@ -27,7 +27,7 @@ export const productSlice = createSlice({
 	name: 'products',
 	initialState,
 	reducers: {
-		ADD_PRODUCT: (state: IState, { payload }: PayloadAction<IProduct>) => {
+		ADD_PRODUCT: (state: IStateRedux, { payload }: PayloadAction<IProduct>) => {
 			const findItem = state.basket.find((obj) => obj.slug === payload.slug)
 			if (findItem) {
 				findItem.count++
@@ -36,7 +36,7 @@ export const productSlice = createSlice({
 			}
 			state.priceTotal = calcTotalPrice(state.basket)
 		},
-		DECREASE_PRODUCT: (state: IState, action: PayloadAction<string>) => {
+		DECREASE_PRODUCT: (state: IStateRedux, action: PayloadAction<string>) => {
 			const findItem = state.basket.find((obj) => obj.slug === action.payload)
 			if (findItem) {
 				if (findItem.count > 1) {
@@ -49,9 +49,13 @@ export const productSlice = createSlice({
 				state.priceTotal = state.priceTotal - findItem?.price
 			}
 		},
+		CLEAR: (state: IStateRedux) => {
+			state.basket = []
+			state.priceTotal = 0
+		},
 	},
 })
-export const { ADD_PRODUCT, DECREASE_PRODUCT } = productSlice.actions
+export const { ADD_PRODUCT, DECREASE_PRODUCT, CLEAR } = productSlice.actions
 
 export const getBasket = (state: RootState) => state.products.basket
 

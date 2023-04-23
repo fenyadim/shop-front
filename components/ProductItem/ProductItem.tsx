@@ -8,8 +8,9 @@ import { Button } from '@/components'
 import { ADD_PRODUCT, DECREASE_PRODUCT, IBasketData } from '@/redux/basketSlice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 
-import styles from './ProductItem.module.scss'
 import { IProduct } from '@/types'
+
+import styles from './ProductItem.module.scss'
 
 interface IProductItem extends IProduct {
 	isHorizont?: boolean
@@ -52,7 +53,7 @@ const ProductItem: FC<IProductItem> = (props) => {
 			</Link>
 			<div className={styles.info_wrapper}>
 				<Link href={`/product/${slug}`}>
-					<h3 className={styles.product_brand}>{brand}</h3>
+					<h3 className={styles.product_brand}>{brand.title}</h3>
 					<h2 className={styles.product_name}>{name}</h2>
 				</Link>
 				<div className={styles.info_bottom}>
