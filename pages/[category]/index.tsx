@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 	}
 }
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
 	const { data: categories } = await tabsService.fetchTabs()
 	return {
 		paths: categories.data.map(({ slug }) => ({ params: { category: slug } })),
