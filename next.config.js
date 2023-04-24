@@ -34,6 +34,14 @@ const nextConfig = {
 			},
 		]
 	},
+	async rewrites() {
+		return [
+			{
+				source: '/uploads/:path*',
+				destination: `http://127.0.0.1:3001/uploads/:path*`, // The :path parameter is used here so will not be automatically passed in the query
+			},
+		]
+	},
 }
 
 module.exports = nextConfig

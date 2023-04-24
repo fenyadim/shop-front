@@ -12,6 +12,7 @@ export const Tab = dynamic(() => import('./Tab/Tab'))
 export const FormOrder = dynamic(() => import('./FormOrder/FormOrder'))
 export const HeadProvider = dynamic(() => import('./HeadProvider/HeadProvider'))
 export const Meta = dynamic(() => import('./Meta/Meta'))
+export const Pagination = dynamic(() => import('./Pagination/Pagination'))
 export { default as ProductItem } from './ProductItem/ProductItem'
 export { default as Button } from './Button/Button'
 export { default as LinkButton } from './LinkButton/LinkButton'

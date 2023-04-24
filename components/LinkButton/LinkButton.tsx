@@ -1,23 +1,23 @@
 import cn from 'classnames'
 import { useRouter } from 'next/router'
-import { ButtonHTMLAttributes, FC } from 'react'
+import { ButtonHTMLAttributes, FC, PropsWithChildren } from 'react'
 
 import styles from './LinkButton.module.scss'
 
-interface ILinkButton extends ButtonHTMLAttributes<HTMLButtonElement> {
-	title: string
+type ILinkButton = {
 	href?: string
 	isBig?: boolean
 	isBordered?: boolean
 	styleBtn?: 'border' | 'accent' | 'clear'
-}
+} & ButtonHTMLAttributes<HTMLButtonElement> &
+	PropsWithChildren
 
 const LinkButton: FC<ILinkButton> = ({
-	title,
 	href,
 	isBig = false,
 	isBordered = true,
 	styleBtn = 'border',
+	children,
 	...rest
 }) => {
 	const { push } = useRouter()
@@ -33,7 +33,7 @@ const LinkButton: FC<ILinkButton> = ({
 			})}
 			{...rest}
 		>
-			{title}
+			{children}
 		</button>
 	)
 }

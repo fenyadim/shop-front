@@ -43,12 +43,13 @@ const ProductItem: FC<IProductItem> = (props) => {
 			<Link href={`/product/${slug}`}>
 				<Image
 					className={styles.product_img}
-					src={`${process.env.URL_BACK}${image.url}`}
+					src={image.url}
 					alt={name}
 					width={isHorizont ? 100 : 170}
 					height={isHorizont ? 100 : 185}
-					unoptimized
 					style={{ objectFit: 'cover', objectPosition: 'top' }}
+					unoptimized
+					priority
 				/>
 			</Link>
 			<div className={styles.info_wrapper}>

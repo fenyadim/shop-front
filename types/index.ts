@@ -29,6 +29,7 @@ export interface IProduct {
 export interface IProductsData {
 	tabs: ITabs[]
 	products: IProduct[]
+	meta: IMeta
 }
 
 export interface IFormValues {
@@ -44,5 +45,12 @@ export interface ParamsPath {
 	params: {
 		category: string
 		subcategory: string
+	}
+}
+
+export interface IMeta {
+	pagination: {
+		page: number
+		pageCount: number
 	}
 }

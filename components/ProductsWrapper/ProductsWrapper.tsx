@@ -1,6 +1,6 @@
 import { FC, Fragment, useEffect, useRef } from 'react'
 
-import { Meta, ProductItem, TabsWrapper } from '@/components'
+import { Pagination, ProductItem, TabsWrapper } from '@/components'
 
 import { IBasketData, getBasket } from '@/redux/basketSlice'
 import { useAppSelector } from '@/redux/hooks'
@@ -9,7 +9,7 @@ import { IProductsData } from '@/types'
 
 import styles from './ProductsWrapper.module.scss'
 
-const ProductsWrapper: FC<IProductsData> = ({ products, tabs }) => {
+const ProductsWrapper: FC<IProductsData> = ({ products, tabs, meta }) => {
 	const basket: IBasketData[] = useAppSelector(getBasket)
 	const isMounted = useRef(false)
 
@@ -42,6 +42,10 @@ const ProductsWrapper: FC<IProductsData> = ({ products, tabs }) => {
 					<h1>Ничего нет!</h1>
 				)}
 			</div>
+			<Pagination
+				pageSize={meta.pagination.pageCount}
+				currentPage={meta.pagination.page}
+			/>
 		</>
 	)
 }

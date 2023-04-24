@@ -33,7 +33,7 @@ const storage =
 		: createNoopStorage()
 
 const persistConfig = {
-	key: 'root',
+	key: 'basket',
 	version: 1,
 	storage,
 }

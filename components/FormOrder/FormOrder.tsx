@@ -94,17 +94,12 @@ const FormOrder: FC<IStateRedux> = ({ priceTotal, basket }) => {
 				/>
 			</div>
 			<div style={{ display: 'flex', justifyContent: 'space-between' }}>
-				<LinkButton
-					title="Оформить заказ"
-					type="submit"
-					disabled={!isValid}
-					styleBtn="accent"
-				/>
-				<LinkButton
-					title="Очистить корзину"
-					styleBtn="clear"
-					onClick={() => dispatch(CLEAR())}
-				/>
+				<LinkButton type="submit" disabled={!isValid} styleBtn="accent">
+					Оформить заказ
+				</LinkButton>
+				<LinkButton styleBtn="clear" onClick={() => dispatch(CLEAR())}>
+					Очистить корзину
+				</LinkButton>
 			</div>
 		</form>
 	)

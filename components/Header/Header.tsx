@@ -21,7 +21,7 @@ const Header: FC<IHeader> = ({ children, title }) => {
 			<header className={styles.header}>
 				<h1 className={styles.header_title}>{title}</h1>
 				<div className={styles.header_nav}>
-					<LinkButton href={'/kosmetika'} title={'Назад'} />
+					<LinkButton href={'/kosmetika'}>Назад</LinkButton>
 					{children}
 				</div>
 			</header>
