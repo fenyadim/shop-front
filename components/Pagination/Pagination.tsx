@@ -32,7 +32,7 @@ const Pagination: FC<IPagination> = ({ pageSize, currentPage }) => {
 						route.push(`${currentUrl(route.query)}?page=${--currentPage}`)
 					}
 				>
-					<Image src={arrow} alt="Назад" width={35} height={15} />
+					<Image src={arrow} alt="Назад" width={35} height={15} priority />
 				</LinkButton>
 			)}
 			{pageSize !== 0 && currentPage !== pageSize && (
@@ -41,7 +41,7 @@ const Pagination: FC<IPagination> = ({ pageSize, currentPage }) => {
 						route.push(`${currentUrl(route.query)}?page=${++currentPage}`)
 					}
 				>
-					<Image src={arrow} alt="Вперед" width={35} height={15} />
+					<Image src={arrow} alt="Вперед" width={35} height={15} priority />
 				</LinkButton>
 			)}
 		</div>

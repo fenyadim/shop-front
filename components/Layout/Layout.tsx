@@ -4,7 +4,7 @@ import { FC, PropsWithChildren } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import { Menu } from '@/components'
+import { Loader, Menu } from '@/components'
 
 import styles from './Layout.module.scss'
 
@@ -33,8 +33,10 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
 		<>
 			<ToastContainer />
 			<div className={cn(jostFont.className, styles.layout)}>
-				{children}
-				<Menu />
+				<Loader>
+					{children}
+					<Menu />
+				</Loader>
 			</div>
 		</>
 	)
