@@ -1,16 +1,25 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { persistReducer, persistStore } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
 import productReducer from '@/redux/basketSlice'
 
-const combinedReducer = combineReducers({
-	products: productReducer,
+const persistConfig = {
+	key: 'products',
+	storage,
+}
+
+// const combinedReducer = combineReducers({
+// 	products: productReducer,
+// })
+
+const persistedReducer = persistReducer(persistConfig, productReducer)
+
+export const store = configureStore({
+	reducer: persistedReducer,
 })
 
-const store = configureStore({
-	reducer: combinedReducer,
-})
-
-export default store
+export const persistor = persistStore(store)
 
 export type RootState = ReturnType<typeof store.getState>
 
