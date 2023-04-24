@@ -30,7 +30,7 @@ export default SubCategoryPage
 export const getServerSideProps = async () => {
 	const { data: categories } = await tabsService.fetchTabs()
 	const params = categories.data.map(({ slug, subcategories }) =>
-		subcategories.map(({ slug: subSlug }) => ({
+		subcategories.forEach(({ slug: subSlug }) => ({
 			params: {
 				category: slug,
 				subcategory: subSlug,
