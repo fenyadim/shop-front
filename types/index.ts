@@ -39,3 +39,10 @@ export interface IFormValues {
 	house: string
 	apartment: string
 }
+
+export interface ParamsPath {
+	params: {
+		category: string
+		subcategory: string
+	}
+}

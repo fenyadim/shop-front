@@ -1,6 +1,6 @@
 import { FC, Fragment, useEffect, useRef } from 'react'
 
-import { ProductItem, TabsWrapper } from '@/components'
+import { Meta, ProductItem, TabsWrapper } from '@/components'
 
 import { IBasketData, getBasket } from '@/redux/basketSlice'
 import { useAppSelector } from '@/redux/hooks'

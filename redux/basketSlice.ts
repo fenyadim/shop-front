@@ -57,6 +57,6 @@ export const productSlice = createSlice({
 })
 export const { ADD_PRODUCT, DECREASE_PRODUCT, CLEAR } = productSlice.actions
 
-export const getBasket = (state: RootState) => state.products.basket
+export const getBasket = (state: RootState) => state.basket
 
 export default productSlice.reducer

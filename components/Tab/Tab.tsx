@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { FC, Fragment } from 'react'
 
-import { LinkButton } from '@/components'
+import { LinkButton, Meta } from '@/components'
 
 import { ISimpleFetchingData, ITabs } from '@/types'
 
@@ -17,6 +17,7 @@ const Tab: FC<ITabsProps> = ({ categories, isSubTab = false, activeTab }) => {
 	const { query } = useRouter()
 
 	return (
+		// <Meta title={activeTab === slug ? title : 'Магазин для дома'}>
 		<div className={styles.tabs}>
 			{categories?.map(({ slug, title }) => (
 				<Fragment key={slug}>
@@ -29,6 +30,7 @@ const Tab: FC<ITabsProps> = ({ categories, isSubTab = false, activeTab }) => {
 				</Fragment>
 			))}
 		</div>
+		// </Meta>
 	)
 }
 

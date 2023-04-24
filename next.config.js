@@ -6,6 +6,7 @@ const nextConfig = {
 	reactStrictMode: true,
 	poweredByHeader: false,
 	env: {
+		APP_URL: 'http://127.0.0.1:3000',
 		HOST_BACK: '127.0.0.1',
 		PORT_BACK: '3001',
 		URL_BACK: `http://127.0.0.1:3001`,

@@ -11,6 +11,7 @@
 	font-size: 16px;
 	color: var(--grey-400);
 	background-color: transparent;
+	cursor: pointer;
 	&:disabled {
 		background-color: var(--accent);
 		color: var(--grey-400);

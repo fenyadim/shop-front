@@ -1,6 +1,9 @@
-import { Tab } from '..'
 import { useRouter } from 'next/router'
 import { FC, useEffect, useState } from 'react'
+
+import { Meta, Tab } from '@/components'
+
+import { titleActiveTab } from '@/utils/titleActiveTab'
 
 import { ISimpleFetchingData, ITabs } from '@/types'
 
@@ -18,10 +21,15 @@ const TabsWrapper: FC<{ tabs: ITabs[] }> = ({ tabs }) => {
 	}, [tabs, query.category])
 
 	return (
-		<div className={styles.tabs_wrapper}>
-			<Tab categories={tabs} activeTab={query.category} />
-			<Tab categories={subTabs} activeTab={query.subcategory} isSubTab />
-		</div>
+		<Meta
+			title={titleActiveTab(tabs, query) as string}
+			description="Магазин в котором найдется все"
+		>
+			<div className={styles.tabs_wrapper}>
+				<Tab categories={tabs} activeTab={query.category} />
+				<Tab categories={subTabs} activeTab={query.subcategory} isSubTab />
+			</div>
+		</Meta>
 	)
 }
 

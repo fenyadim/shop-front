@@ -20,7 +20,7 @@ const ProductItem: FC<IProductItem> = (props) => {
 	const { slug, image, volume, brand, name, price, isHorizont = false } = props
 
 	const findProduct: IBasketData | undefined = useAppSelector((state) =>
-		state.products.basket.find((obj) => obj.slug === slug)
+		state.basket.find((obj) => obj.slug === slug)
 	)
 	const dispatch = useAppDispatch()
 	const countProduct = findProduct ? findProduct.count : 0

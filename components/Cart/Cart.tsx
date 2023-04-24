@@ -8,7 +8,7 @@ import { useAppSelector } from '@/redux/hooks'
 import styles from './Cart.module.scss'
 
 const Cart: FC = () => {
-	const { basket, priceTotal } = useAppSelector((state) => state.products)
+	const { basket, priceTotal } = useAppSelector((state) => state)
 	return (
 		<>
 			<Header title={'Корзина'}>
