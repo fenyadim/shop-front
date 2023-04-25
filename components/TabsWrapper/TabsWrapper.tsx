@@ -17,7 +17,9 @@ const TabsWrapper: FC<{ tabs: ITabs[] }> = ({ tabs }) => {
 
 	useEffect(() => {
 		const find = tabs.find((item) => item.slug === query.category)
-		setSubTabs(find?.subcategories)
+		if (find) {
+			setSubTabs(find?.subcategories)
+		}
 	}, [tabs, query.category])
 
 	return (

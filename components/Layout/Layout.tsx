@@ -1,6 +1,8 @@
 import cn from 'classnames'
+import { AnimatePresence, motion } from 'framer-motion'
 import localFont from 'next/font/local'
-import { FC, PropsWithChildren } from 'react'
+import { useRouter } from 'next/router'
+import { FC, PropsWithChildren, useEffect, useRef, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -28,17 +30,37 @@ const jostFont = localFont({
 	],
 })
 
+const variants = {
+	initialState: {
+		opacity: 0,
+	},
+	animateState: {
+		opacity: 1,
+	},
+	exitState: { opacity: 0 },
+}
+
 const Layout: FC<PropsWithChildren> = ({ children }) => {
+	const route = useRouter()
+
 	return (
-		<>
+		<AnimatePresence>
 			<ToastContainer />
-			<div className={cn(jostFont.className, styles.layout)}>
-				<Loader>
-					{children}
-					<Menu />
-				</Loader>
-			</div>
-		</>
+			<motion.div
+				key={route.route}
+				variants={variants}
+				initial="initialState"
+				animate="animateState"
+				exit="exitState"
+				transition={{
+					duration: 0.2,
+				}}
+				className={cn(jostFont.className, styles.layout)}
+			>
+				{children}
+				<Menu />
+			</motion.div>
+		</AnimatePresence>
 	)
 }
 

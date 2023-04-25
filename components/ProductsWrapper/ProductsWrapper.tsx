@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { FC, Fragment, useEffect, useRef } from 'react'
 
 import { Pagination, ProductItem, TabsWrapper } from '@/components'
@@ -8,6 +9,7 @@ import { useAppSelector } from '@/redux/hooks'
 import { IProductsData } from '@/types'
 
 import styles from './ProductsWrapper.module.scss'
+import { variants } from '@/constans/animate'
 
 const ProductsWrapper: FC<IProductsData> = ({ products, tabs, meta }) => {
 	const basket: IBasketData[] = useAppSelector(getBasket)
@@ -24,7 +26,12 @@ const ProductsWrapper: FC<IProductsData> = ({ products, tabs, meta }) => {
 	return (
 		<>
 			<TabsWrapper tabs={tabs} />
-			<div className={styles.wrapper}>
+			<motion.div
+				variants={variants}
+				initial="hidden"
+				animate="show"
+				className={styles.wrapper}
+			>
 				{products.length ? (
 					products.map(({ image, volume, name, slug, price, brand }) => (
 						<Fragment key={slug}>
@@ -41,7 +48,7 @@ const ProductsWrapper: FC<IProductsData> = ({ products, tabs, meta }) => {
 				) : (
 					<h1>Ничего нет!</h1>
 				)}
-			</div>
+			</motion.div>
 			<Pagination
 				pageSize={meta.pagination.pageCount}
 				currentPage={meta.pagination.page}

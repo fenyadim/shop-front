@@ -1,4 +1,5 @@
 import cn from 'classnames'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
@@ -33,8 +34,14 @@ const ProductItem: FC<IProductItem> = (props) => {
 		dispatch(DECREASE_PRODUCT(slug))
 	}
 
+	const cards = {
+		hidden: { opacity: 0, y: !isHorizont ? 30 : 0, x: isHorizont ? 30 : 0 },
+		show: { opacity: 1, y: 0, x: 0, transition: { duration: 0.5 } },
+	}
+
 	return (
-		<div
+		<motion.div
+			variants={cards}
 			className={cn(
 				{ [styles.horizontal]: isHorizont, [styles.vertical]: !isHorizont },
 				styles.card
@@ -70,7 +77,7 @@ const ProductItem: FC<IProductItem> = (props) => {
 					)}
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	)
 }
 

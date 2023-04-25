@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { FC, Fragment } from 'react'
 
@@ -6,6 +7,7 @@ import { FormOrder, Header, ProductItem } from '@/components'
 import { useAppSelector } from '@/redux/hooks'
 
 import styles from './Cart.module.scss'
+import { variants } from '@/constans/animate'
 
 const Cart: FC = () => {
 	const { basket, priceTotal } = useAppSelector((state) => state)
@@ -18,7 +20,12 @@ const Cart: FC = () => {
 				<div
 					style={{ height: '70vh', overflowY: 'scroll', padding: '1px 20px' }}
 				>
-					<div className={styles.basket_wrapper}>
+					<motion.div
+						variants={variants}
+						initial="hidden"
+						animate="show"
+						className={styles.basket_wrapper}
+					>
 						{basket.map(({ brand, volume, slug, price, name, image }) => (
 							<Fragment key={slug}>
 								<ProductItem
@@ -32,7 +39,7 @@ const Cart: FC = () => {
 								/>
 							</Fragment>
 						))}
-					</div>
+					</motion.div>
 					<FormOrder basket={basket} priceTotal={priceTotal} />
 				</div>
 			) : (

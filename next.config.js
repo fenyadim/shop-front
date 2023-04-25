@@ -3,7 +3,6 @@
 const path = require('path')
 
 const nextConfig = {
-	reactStrictMode: true,
 	poweredByHeader: false,
 	env: {
 		APP_URL: 'http://127.0.0.1:3000',
