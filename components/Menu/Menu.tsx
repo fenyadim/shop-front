@@ -35,7 +35,7 @@ const Menu: React.FC = () => {
 					priority
 				/>
 			</Link>
-			<a href="#">
+			<Link href="/about">
 				<Image
 					src="/image/about.svg"
 					alt="About"
@@ -43,7 +43,7 @@ const Menu: React.FC = () => {
 					height={26}
 					priority
 				/>
-			</a>
+			</Link>
 		</div>
 	)
 }

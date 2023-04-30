@@ -4,6 +4,7 @@ export const Header = dynamic(() => import('./Header/Header'))
 export const Layout = dynamic(() => import('./Layout/Layout'))
 export const Cart = dynamic(() => import('./Cart/Cart'))
 export const Menu = dynamic(() => import('./Menu/Menu'))
+export const About = dynamic(() => import('./About/About'))
 export const ProductsWrapper = dynamic(
 	() => import('./ProductsWrapper/ProductsWrapper')
 )
