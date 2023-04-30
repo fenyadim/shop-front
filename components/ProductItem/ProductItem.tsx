@@ -21,18 +21,9 @@ const ProductItem: FC<IProductItem> = (props) => {
 	const { slug, image, volume, brand, name, price, isHorizont = false } = props
 
 	const findProduct: IBasketData | undefined = useAppSelector((state) =>
-		state.basket.find((obj) => obj.slug === slug)
+		state.basket.find((obj) => obj.slug === props.slug)
 	)
-	const dispatch = useAppDispatch()
 	const countProduct = findProduct ? findProduct.count : 0
-
-	const addProduct = () => {
-		dispatch(ADD_PRODUCT(props))
-	}
-
-	const decreaseProduct = () => {
-		dispatch(DECREASE_PRODUCT(slug))
-	}
 
 	const cards = {
 		hidden: { opacity: 0, y: !isHorizont ? 30 : 0, x: isHorizont ? 30 : 0 },
@@ -66,12 +57,7 @@ const ProductItem: FC<IProductItem> = (props) => {
 				</Link>
 				<div className={styles.info_bottom}>
 					{!isHorizont && <p className={styles.volume}>Объем: {volume}ml</p>}
-					<Button
-						price={price}
-						count={countProduct}
-						addProduct={addProduct}
-						decreaseProduct={decreaseProduct}
-					/>
+					<Button {...props} />
 					{isHorizont && (
 						<p className={styles.price}>{price * countProduct} руб.</p>
 					)}

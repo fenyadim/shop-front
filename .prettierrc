@@ -8,6 +8,7 @@
 		"<THIRD_PARTY_MODULES>",
 		"^@/components$",
 		"^@/redux/(.*)$",
+		"^@/constans/(.*)$",
 		"^@/services/(.*)$",
 		"^@/utils/(.*)$",
 		"^@/types/(.*)$",

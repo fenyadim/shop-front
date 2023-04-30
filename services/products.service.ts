@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import { IBasketData } from '@/redux/basketSlice'
 
-import { IFormValues, IMeta, IProductsData } from '@/types'
+import { IFormValues, IMeta, IProduct, IProductsData } from '@/types'
 
 axios.defaults.baseURL = process.env.URL_BACK
 
@@ -23,6 +23,12 @@ export const productsService = {
 	) {
 		return await axios.get<IFetchingType>(
 			`/api/productsp?populate=*&filters[subcategory][slug][$eqi][0]=${subcategory}&pagination[page]=${page}&pagination[pageSize]=10`
+		)
+	},
+
+	async fetchOne(slug: string) {
+		return await axios.get<{ data: IProduct[] }>(
+			`/api/productsp?filters[slug][$eqi]=${slug}&populate=*`
 		)
 	},
 

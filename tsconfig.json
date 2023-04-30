@@ -16,12 +16,16 @@
 		"incremental": true,
 		"baseUrl": "./",
 		"paths": {
-			"@/components/*": ["components"],
-			"@/redux/*": ["redux/*"],
-			"@/services/*": ["services/*"],
-			"@/utils/*": ["utils/*"],
-			"@/types/*": ["types/*"],
-			"@/*": ["./*"]
+			"@/components/*": ["./components/*"],
+			"@/components": ["./components"],
+			"@/redux/*": ["./redux/*"],
+			"@/services/*": ["./services/*"],
+			"@/utils/*": ["./utils/*"],
+			"@/constans/*": ["./constans/*"],
+			"@/config/*": ["./config/*"],
+			"@/types/*": ["./types/*"],
+			"@/types": ["./types"]
+			// "@/*": ["./*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

@@ -6,10 +6,11 @@ import { Pagination, ProductItem, TabsWrapper } from '@/components'
 import { IBasketData, getBasket } from '@/redux/basketSlice'
 import { useAppSelector } from '@/redux/hooks'
 
+import { variants } from '@/constans/animate'
+
 import { IProductsData } from '@/types'
 
 import styles from './ProductsWrapper.module.scss'
-import { variants } from '@/constans/animate'
 
 const ProductsWrapper: FC<IProductsData> = ({ products, tabs, meta }) => {
 	const basket: IBasketData[] = useAppSelector(getBasket)

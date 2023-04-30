@@ -15,6 +15,7 @@ const Meta: FC<ISeo> = ({ title, description, children }) => {
 		<>
 			<Head>
 				<title itemProp="headline">{titleMerge(title)}</title>
+				<link rel="icon" href="/favicon.ico" />
 				{description ? (
 					<>
 						<meta
@@ -26,6 +27,10 @@ const Meta: FC<ISeo> = ({ title, description, children }) => {
 						<meta property="og:locale" content="ru" />
 						<meta property="og:title" content={titleMerge(title)} />
 						<meta property="og:url" content={currentUrl} />
+						<meta
+							name="viewport"
+							content="width=device-width, initial-scale=1"
+						/>
 						{/* <meta property="og:image" content={image || logoImage} /> */}
 						<meta property="og:site_name" content={siteName} />
 						<meta

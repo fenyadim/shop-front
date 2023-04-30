@@ -26,6 +26,12 @@ export interface IProduct {
 	}
 }
 
+export interface IProductWithCategory extends IProduct {
+	category: {
+		title: string
+	}
+}
+
 export interface IProductsData {
 	tabs: ITabs[]
 	products: IProduct[]

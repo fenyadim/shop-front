@@ -1,10 +1,25 @@
-import { NextPage } from 'next'
-import { useRouter } from 'next/router'
+import { GetServerSideProps, NextPage } from 'next'
 
-const SlugPage: NextPage = () => {
-	const { query } = useRouter()
+import { SingleProduct } from '@/components'
 
-	return <div>{query.slug}</div>
+import { productsService } from '@/services/products.service'
+
+import { IProductWithCategory } from '@/types'
+
+const ProductPage: NextPage<{ products: IProductWithCategory }> = ({
+	products,
+}) => {
+	return <SingleProduct {...products} />
 }
 
-export default SlugPage
+export default ProductPage
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	const { slug } = context.params as { slug: string }
+	const response = await productsService.fetchOne(slug)
+	const { data: products } = response.data
+
+	return {
+		props: { products: products[0] },
+	}
+}

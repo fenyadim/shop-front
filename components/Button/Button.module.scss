@@ -1,5 +1,7 @@
 .button_wrapper {
 	display: flex;
+	max-width: 100px;
+	min-width: 86px;
 	justify-content: space-around;
 	align-items: center;
 	padding: 6px 10px;
@@ -9,15 +11,18 @@
 	p {
 		font-size: 10px;
 	}
+}
 
-	.price_title {
-		margin-right: 10px;
+.button_big {
+	max-width: 120px;
+	min-width: 100px;
+	p {
+		font-size: 13px;
 	}
 }
 
 .button_active {
 	background: var(--accent-dark);
-	width: 86px;
 	button {
 		position: relative;
 		background: none;

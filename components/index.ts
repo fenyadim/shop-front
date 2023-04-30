@@ -7,6 +7,9 @@ export const Menu = dynamic(() => import('./Menu/Menu'))
 export const ProductsWrapper = dynamic(
 	() => import('./ProductsWrapper/ProductsWrapper')
 )
+export const SingleProduct = dynamic(
+	() => import('./SingleProduct/SingleProduct')
+)
 export const TabsWrapper = dynamic(() => import('./TabsWrapper/TabsWrapper'))
 export const Tab = dynamic(() => import('./Tab/Tab'))
 export const FormOrder = dynamic(() => import('./FormOrder/FormOrder'))
