@@ -47,7 +47,7 @@ const ProductsWrapper: FC<IProductsData> = ({ products, tabs, meta }) => {
 						</Fragment>
 					))
 				) : (
-					<h1>Ничего нет!</h1>
+					<h1 className={styles.empty_text}>Ничего нет!</h1>
 				)}
 			</motion.div>
 			<Pagination

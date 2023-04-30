@@ -1,7 +1,7 @@
 .header {
 	display: flex;
 	flex-direction: column;
-	padding: 35px 20px 0 20px;
+	padding: 35px 20px 0;
 	margin-bottom: 30px;
 	.header_title {
 		font-size: 32px;
@@ -13,5 +13,11 @@
 		justify-content: space-between;
 		align-items: center;
 		padding-top: 20px;
+	}
+}
+
+@media screen and (min-width: 960px) {
+	.header {
+		padding: 35px 250px 0;
 	}
 }

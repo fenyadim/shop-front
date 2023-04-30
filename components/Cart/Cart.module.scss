@@ -6,10 +6,33 @@
 .basket_wrapper {
 	display: grid;
 	gap: 15px;
+	align-content: flex-start;
+	justify-self: center;
 }
 
 .empty_text {
 	padding: 0 20px;
 	color: var(--grey-400);
 	text-align: center;
+}
+
+.basket {
+	display: grid;
+	grid-template-rows: min-content min-content;
+	height: 70vh;
+	overflow-y: scroll;
+	padding: 1px 20px;
+}
+
+@media screen and (min-width: 1270px) {
+	.basket_wrapper {
+		justify-self: end;
+		padding-bottom: 10px;
+	}
+	.basket {
+		padding: 1px 250px;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: min-content;
+		gap: 50px;
+	}
 }

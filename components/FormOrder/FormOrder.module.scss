@@ -4,6 +4,7 @@ $paddingForm: 40px;
 	position: relative;
 	max-width: 370px;
 	padding-top: $paddingForm;
+	justify-self: center;
 	&::before {
 		position: absolute;
 		top: $paddingForm / 2;
@@ -18,4 +19,22 @@ $paddingForm: 40px;
 .error {
 	margin-bottom: 15px;
 	color: var(--red);
+}
+
+@media screen and (min-width: 1270px) {
+	.form {
+		justify-self: flex-start;
+		padding-top: 10px;
+
+		&::before {
+			position: absolute;
+			top: 0;
+			left: -25px;
+			content: '';
+			display: block;
+			border-left: 1px solid var(--grey);
+			width: 1px;
+			height: 100%;
+		}
+	}
 }

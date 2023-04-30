@@ -17,9 +17,7 @@ const Cart: FC = () => {
 				<h2 className={styles.total_sum}>Итого: {priceTotal} руб.</h2>
 			</Header>
 			{basket.length ? (
-				<div
-					style={{ height: '70vh', overflowY: 'scroll', padding: '1px 20px' }}
-				>
+				<div className={styles.basket}>
 					<motion.div
 						variants={variants}
 						initial="hidden"
