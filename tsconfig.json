@@ -17,7 +17,8 @@
 		"baseUrl": "./",
 		"paths": {
 			"@/components/*": ["./components/*"],
-			"@/components": ["./components"],
+			"@/components": ["components/index.ts"],
+			"@/styles/*": ["./styles/*"],
 			"@/redux/*": ["./redux/*"],
 			"@/services/*": ["./services/*"],
 			"@/utils/*": ["./utils/*"],
@@ -25,7 +26,6 @@
 			"@/config/*": ["./config/*"],
 			"@/types/*": ["./types/*"],
 			"@/types": ["./types"]
-			// "@/*": ["./*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

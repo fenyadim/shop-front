@@ -1,13 +1,13 @@
 import { motion } from 'framer-motion'
-import { useRouter } from 'next/router'
 import { FC, Fragment } from 'react'
 
 import { FormOrder, Header, ProductItem } from '@/components'
 
 import { useAppSelector } from '@/redux/hooks'
 
-import styles from './Cart.module.scss'
 import { variants } from '@/constans/animate'
+
+import styles from './Cart.module.scss'
 
 const Cart: FC = () => {
 	const { basket, priceTotal } = useAppSelector((state) => state)
@@ -43,7 +43,7 @@ const Cart: FC = () => {
 					<FormOrder basket={basket} priceTotal={priceTotal} />
 				</div>
 			) : (
-				<h2>Корзина пуста!</h2>
+				<h2 className={styles.empty_text}>Корзина пуста!</h2>
 			)}
 		</>
 	)

@@ -2,11 +2,11 @@ import cn from 'classnames'
 import { AnimatePresence, motion } from 'framer-motion'
 import localFont from 'next/font/local'
 import { useRouter } from 'next/router'
-import { FC, PropsWithChildren, useEffect, useRef, useState } from 'react'
+import { FC, PropsWithChildren } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import { Loader, Menu } from '@/components'
+import { Menu } from '@/components'
 
 import styles from './Layout.module.scss'
 

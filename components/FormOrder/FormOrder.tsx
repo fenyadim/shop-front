@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { FC } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
@@ -7,7 +8,11 @@ import { Input, LinkButton } from '@/components'
 import { CLEAR, IStateRedux } from '@/redux/basketSlice'
 import { useAppDispatch } from '@/redux/hooks'
 
+import { variants } from '@/constans/animate'
+
 import { productsService } from '@/services/products.service'
+
+import { animateVariable } from '@/utils/animateVariable'
 
 import { IFormValues } from '@/types'
 
@@ -35,7 +40,14 @@ const FormOrder: FC<IStateRedux> = ({ priceTotal, basket }) => {
 	}
 
 	return (
-		<form className={styles.form} onSubmit={handleSubmit(submit)} method="post">
+		<motion.form
+			variants={variants}
+			initial="hidden"
+			animate="show"
+			className={styles.form}
+			onSubmit={handleSubmit(submit)}
+			method="post"
+		>
 			<Input
 				{...register('phone', {
 					required: 'Введите телефон',
@@ -93,15 +105,18 @@ const FormOrder: FC<IStateRedux> = ({ priceTotal, basket }) => {
 					error={errors.apartment}
 				/>
 			</div>
-			<div style={{ display: 'flex', justifyContent: 'space-between' }}>
+			<motion.div
+				variants={animateVariable('y', -30, 0.2)}
+				style={{ display: 'flex', justifyContent: 'space-between' }}
+			>
 				<LinkButton type="submit" disabled={!isValid} styleBtn="accent">
 					Оформить заказ
 				</LinkButton>
 				<LinkButton styleBtn="clear" onClick={() => dispatch(CLEAR())}>
 					Очистить корзину
 				</LinkButton>
-			</div>
-		</form>
+			</motion.div>
+		</motion.form>
 	)
 }
 

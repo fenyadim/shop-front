@@ -6,8 +6,8 @@ import { FC } from 'react'
 
 import { Button } from '@/components'
 
-import { ADD_PRODUCT, DECREASE_PRODUCT, IBasketData } from '@/redux/basketSlice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { IBasketData } from '@/redux/basketSlice'
+import { useAppSelector } from '@/redux/hooks'
 
 import { IProduct } from '@/types'
 

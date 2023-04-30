@@ -1,6 +1,9 @@
 import cn from 'classnames'
+import { motion } from 'framer-motion'
 import { forwardRef } from 'react'
 import InputMask from 'react-input-mask'
+
+import { animateVariable } from '@/utils/animateVariable'
 
 import styles from './Input.module.scss'
 import { IInput } from './input.interface'
@@ -11,7 +14,8 @@ const Input = forwardRef<HTMLInputElement, IInput>(
 		ref
 	) => {
 		return (
-			<div
+			<motion.div
+				variants={animateVariable('x', 30, 0.2)}
 				className={cn(styles.field, {
 					[styles.error]: error,
 				})}
@@ -31,7 +35,7 @@ const Input = forwardRef<HTMLInputElement, IInput>(
 					<input ref={ref} type={type} placeholder={placeholder} {...rest} />
 				)}
 				{error && <span className={styles.error_text}>{error.message}</span>}
-			</div>
+			</motion.div>
 		)
 	}
 )

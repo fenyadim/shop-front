@@ -1,4 +1,8 @@
-export const animateVariable = (coord: 'x' | 'y', value: number) => ({
+export const animateVariable = (
+	coord: 'x' | 'y',
+	value: number,
+	duration: number = 0.5
+) => ({
 	hidden: {
 		opacity: 0,
 		[coord]: value,
@@ -6,6 +10,6 @@ export const animateVariable = (coord: 'x' | 'y', value: number) => ({
 	show: {
 		opacity: 1,
 		[coord]: 0,
-		transition: { duration: 0.5 },
+		transition: { duration },
 	},
 })
