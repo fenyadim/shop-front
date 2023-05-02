@@ -3,7 +3,6 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { RootState } from '@/redux/store'
 
 import { calcTotalPrice } from '@/utils/calcTotalPrice'
-import { getBasketFromLS } from '@/utils/getBasketFromLS'
 
 import { IProduct } from '@/types'
 
@@ -15,8 +14,6 @@ export interface IStateRedux {
 	basket: IBasketData[]
 	priceTotal: number
 }
-
-const items = getBasketFromLS() as IStateRedux
 
 const initialState: IStateRedux = {
 	basket: [],

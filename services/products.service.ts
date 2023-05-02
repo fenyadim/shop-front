@@ -37,7 +37,7 @@ export const productsService = {
 		priceTotal: number,
 		basket: IBasketData[]
 	) {
-		return await axios.post(`${process.env.URL_BACK}/api/orders`, {
+		return await axios.post(`https://strapi.shop-with-tayana.ru/api/orders`, {
 			data: {
 				...formData,
 				total: priceTotal,
