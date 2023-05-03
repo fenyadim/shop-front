@@ -53,6 +53,7 @@ const FormOrder: FC<IStateRedux> = ({ priceTotal, basket }) => {
 				placeholder="+7(___)___-__-__"
 				title="Телефон"
 				error={errors.phone}
+				//@ts-ignore
 				register={{
 					...register('phone', {
 						required: 'Введите телефон',
@@ -67,6 +68,7 @@ const FormOrder: FC<IStateRedux> = ({ priceTotal, basket }) => {
 				title="ФИО"
 				placeholder="Например, Иванов Иван Иванович"
 				error={errors.name}
+				//@ts-ignore
 				register={{
 					...register('name', {
 						required: 'Введите ФИО',
@@ -78,6 +80,7 @@ const FormOrder: FC<IStateRedux> = ({ priceTotal, basket }) => {
 				}}
 			/>
 			<Input
+				//@ts-ignore
 				register={{
 					...register('city', { required: 'Введите город/поселок' }),
 				}}
@@ -86,6 +89,7 @@ const FormOrder: FC<IStateRedux> = ({ priceTotal, basket }) => {
 				error={errors.city}
 			/>
 			<Input
+				//@ts-ignore
 				register={{ ...register('street') }}
 				title="Улица"
 				placeholder="Например, ул.Пушкина"
@@ -99,12 +103,14 @@ const FormOrder: FC<IStateRedux> = ({ priceTotal, basket }) => {
 				}}
 			>
 				<Input
+					//@ts-ignore
 					register={{ ...register('house', { required: 'Введите дом' }) }}
 					title="Дом"
 					placeholder="Например, д.45/4"
 					error={errors.house}
 				/>
 				<Input
+					//@ts-ignore
 					register={{
 						...register('apartment', { required: 'Введите квартиру' }),
 					}}
