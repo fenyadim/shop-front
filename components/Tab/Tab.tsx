@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { FC, Fragment } from 'react'
+import { FC, Fragment, useEffect, useState } from 'react'
 
 import { LinkButton } from '@/components'
 
@@ -15,6 +15,13 @@ interface ITabsProps {
 
 const Tab: FC<ITabsProps> = ({ categories, isSubTab = false, activeTab }) => {
 	const { query } = useRouter()
+	const [active, setActive] = useState<string | string[] | undefined>('')
+
+	useEffect(() => {
+		if (activeTab) {
+			setActive(activeTab)
+		}
+	}, [activeTab])
 
 	return (
 		<div className={styles.tabs}>
@@ -23,7 +30,7 @@ const Tab: FC<ITabsProps> = ({ categories, isSubTab = false, activeTab }) => {
 					<LinkButton
 						href={!isSubTab ? `/${slug}` : `/${query.category}/${slug}`}
 						isBig={!isSubTab}
-						isBordered={activeTab === slug}
+						isBordered={active === slug}
 					>
 						{title}
 					</LinkButton>

@@ -2,10 +2,12 @@ $width: 350px;
 
 .navigation {
 	position: absolute;
-	left: calc(50% - ($width / 2));
+	// left: calc(50% - ($width / 2));
+	left: 0;
 	bottom: 30px;
 	height: 45px;
-	min-width: $width;
+	// min-width: $width;
+	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;

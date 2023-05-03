@@ -1,6 +1,9 @@
 import cn from 'classnames'
+import { motion } from 'framer-motion'
 import { FC } from 'react'
 import InputMask from 'react-input-mask'
+
+import { animateVariable } from '@/utils/animateVariable'
 
 import styles from './Input.module.scss'
 import { IInput } from './input.interface'
@@ -15,7 +18,8 @@ const Input: FC<IInput> = ({
 	...props
 }) => {
 	return (
-		<div
+		<motion.div
+			variants={animateVariable('x', 30, 0.2)}
 			className={cn(styles.field, {
 				[styles.error]: error,
 			})}
@@ -34,7 +38,7 @@ const Input: FC<IInput> = ({
 				<input type={type} placeholder={placeholder} {...register} {...props} />
 			)}
 			{error && <span className={styles.error_text}>{error.message}</span>}
-		</div>
+		</motion.div>
 	)
 }
 

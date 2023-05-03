@@ -1,9 +1,10 @@
 .total_sum {
-	font-size: 20px;
+	font-size: clamp(12px, calc(var(--index) * 2.2), 20px);
 	font-weight: 600;
 }
 
 .basket_wrapper {
+	width: 100%;
 	display: grid;
 	gap: 15px;
 	align-content: flex-start;
@@ -17,14 +18,51 @@
 }
 
 .basket {
+	position: relative;
 	display: grid;
 	grid-template-rows: min-content min-content;
-	height: 70vh;
+	width: 100%;
 	overflow-y: scroll;
 	padding: 1px 20px;
 }
 
-@media screen and (min-width: 1270px) {
+@media screen and (min-height: 400px) {
+	.basket {
+		height: 49vh;
+	}
+}
+
+@media screen and (min-height: 550px) {
+	.basket {
+		height: 56vh;
+	}
+}
+
+@media screen and (min-height: 800px) {
+	.basket {
+		height: 70vh;
+	}
+}
+
+@media screen and (min-width: 800px) {
+	.basket_wrapper {
+		justify-self: end;
+		padding-bottom: 10px;
+	}
+	.basket {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: min-content;
+		gap: 50px;
+	}
+}
+
+@media screen and (min-height: 1100px) {
+	.basket {
+		height: 79vh;
+	}
+}
+
+@media screen and (min-width: 1200px) {
 	.basket_wrapper {
 		justify-self: end;
 		padding-bottom: 10px;
