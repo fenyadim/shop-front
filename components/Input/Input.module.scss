@@ -58,3 +58,33 @@
 		color: var(--red);
 	}
 }
+
+@media screen and (min-width: 250px) {
+	.field {
+		input {
+			font-size: 12px;
+		}
+		.label {
+			top: -9px;
+			font-size: 10px;
+		}
+	}
+	.error_text {
+		font-size: 10px;
+	}
+}
+
+@media screen and (min-width: 350px) {
+	.field {
+		input {
+			font-size: 14px;
+		}
+		.label {
+			top: -11px;
+			font-size: 12px;
+		}
+	}
+	.error_text {
+		font-size: 12px;
+	}
+}

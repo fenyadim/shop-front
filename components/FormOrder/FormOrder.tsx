@@ -23,7 +23,6 @@ const FormOrder: FC<IStateRedux> = ({ priceTotal, basket }) => {
 	const {
 		register,
 		handleSubmit,
-		watch,
 		formState: { errors, isValid },
 	} = useForm<IFormValues>({
 		mode: 'onChange',
@@ -34,19 +33,18 @@ const FormOrder: FC<IStateRedux> = ({ priceTotal, basket }) => {
 		try {
 			await productsService.postOrder(formData, priceTotal, basket)
 			toast.success('Ваш заказ успешно создан!')
-			// dispatch(CLEAR())
+			dispatch(CLEAR())
 		} catch (error: any) {
 			toast.error('Проблемы с сервером. Пожалуйста, подождите!')
 		}
 	}
 	return (
-		<form
-			// variants={variants}
-			// initial="hidden"
-			// animate="show"
+		<motion.form
+			variants={variants}
+			initial="hidden"
+			animate="show"
 			className={styles.form}
 			onSubmit={handleSubmit(submit)}
-			// method="post"
 		>
 			<Input
 				type="tel"
@@ -95,13 +93,7 @@ const FormOrder: FC<IStateRedux> = ({ priceTotal, basket }) => {
 				placeholder="Например, ул.Пушкина"
 				error={errors.street}
 			/>
-			<div
-				style={{
-					display: 'grid',
-					gap: '10px',
-					gridTemplateColumns: '1fr 1fr',
-				}}
-			>
+			<div className={styles.addressWrapper}>
 				<Input
 					//@ts-ignore
 					register={{ ...register('house', { required: 'Введите дом' }) }}
@@ -119,22 +111,18 @@ const FormOrder: FC<IStateRedux> = ({ priceTotal, basket }) => {
 					error={errors.apartment}
 				/>
 			</div>
-			<div
-				// variants={animateVariable('y', -30, 0.2)}
+			<motion.div
+				variants={animateVariable('y', -30, 0.2)}
 				style={{ display: 'flex', justifyContent: 'space-between' }}
 			>
-				<LinkButton
-					type="submit"
-					// disabled={!isValid}
-					styleBtn="accent"
-				>
+				<LinkButton type="submit" disabled={!isValid} styleBtn="accent">
 					Оформить заказ
 				</LinkButton>
 				<LinkButton styleBtn="clear" onClick={() => dispatch(CLEAR())}>
 					Очистить корзину
 				</LinkButton>
-			</div>
-		</form>
+			</motion.div>
+		</motion.form>
 	)
 }
 

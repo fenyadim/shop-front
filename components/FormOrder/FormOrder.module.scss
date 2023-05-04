@@ -2,7 +2,8 @@ $paddingForm: 40px;
 
 .form {
 	position: relative;
-	max-width: 370px;
+	// max-width: 370px;
+	width: 100%;
 	padding-top: $paddingForm;
 	justify-self: center;
 	&::before {
@@ -16,12 +17,18 @@ $paddingForm: 40px;
 	}
 }
 
+.addressWrapper {
+	display: grid;
+	gap: 10px;
+	grid-template-columns: 1fr 1fr;
+}
+
 .error {
 	margin-bottom: 15px;
 	color: var(--red);
 }
 
-@media screen and (min-width: 1270px) {
+@media screen and (min-width: 800px) {
 	.form {
 		justify-self: flex-start;
 		padding-top: 10px;
@@ -36,5 +43,17 @@ $paddingForm: 40px;
 			width: 1px;
 			height: 100%;
 		}
+	}
+}
+
+@media screen and (min-width: 250px) {
+	.addressWrapper {
+		display: block;
+	}
+}
+
+@media screen and (min-width: 358px) {
+	.addressWrapper {
+		display: grid;
 	}
 }

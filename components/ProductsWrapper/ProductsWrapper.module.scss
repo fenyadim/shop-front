@@ -2,7 +2,7 @@
 	display: grid;
 	gap: 15px;
 	grid-template-columns: repeat(auto-fit, 170px);
-	grid-template-rows: repeat(auto-fit, min-content);
+	// grid-template-rows: repeat(auto-fit, min-content);
 	justify-content: center;
 	padding: 10px 10px;
 	overflow-y: scroll;
@@ -14,9 +14,17 @@
 	font-size: 24px;
 }
 
-@media screen and (min-height: 660px) {
+@media screen and (min-height: 450px) {
 	.wrapper {
-		height: 65vh;
+		grid-template-columns: repeat(auto-fit, 150px);
+		height: 50vh;
+	}
+}
+
+@media screen and (min-height: 520px) {
+	.wrapper {
+		grid-template-columns: repeat(auto-fit, 170px);
+		height: 50vh;
 	}
 }
 

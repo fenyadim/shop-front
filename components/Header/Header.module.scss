@@ -4,7 +4,8 @@
 	padding: 35px 20px 0;
 	margin-bottom: 30px;
 	.header_title {
-		font-size: 32px;
+		// font-size: 32px;
+		font-size: clamp(14px, calc(var(--index) * 3), 32px);
 		font-weight: 500;
 		color: var(--grey-400);
 	}
@@ -21,3 +22,27 @@
 		padding: 35px 250px 0;
 	}
 }
+
+// @media screen and (min-width: 250px) {
+// 	.header_title {
+// 		font-size: 32px;
+// 	}
+// }
+
+// @media screen and (min-width: 300px) {
+// 	.button_link {
+// 		font-size: calc(var(--index) * 1.5);
+// 	}
+// 	.active {
+// 		padding: 3.5px calc(var(--index) * 1.5);
+// 	}
+// }
+
+// @media screen and (min-width: 350px) {
+// 	.button_link {
+// 		font-size: 16px;
+// 	}
+// 	.active {
+// 		padding: 3.5px calc(var(--index) * 1.5);
+// 	}
+// }
