@@ -30,6 +30,7 @@ const Tab: FC<ITabsProps> = ({ categories, isSubTab = false, activeTab }) => {
 					<LinkButton
 						href={!isSubTab ? `/${slug}` : `/${query.category}/${slug}`}
 						isBig={!isSubTab}
+						styleBtn="tab"
 						isBordered={active === slug}
 					>
 						{title}

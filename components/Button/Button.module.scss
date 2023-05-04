@@ -1,15 +1,16 @@
 .button_wrapper {
 	display: flex;
 	max-width: 100px;
-	min-width: 86px;
-	justify-content: space-around;
+	max-height: 26px;
+	justify-content: center;
 	align-items: center;
-	padding: 6px 10px;
+	padding: 6px 15px;
 	border-radius: 20px;
 	background: var(--accent);
 	cursor: pointer;
 	p {
 		font-size: 10px;
+		margin-right: 5px;
 	}
 }
 
@@ -23,6 +24,15 @@
 
 .button_active {
 	background: var(--accent-dark);
+	align-items: center;
+	border-radius: 20px;
+	cursor: pointer;
+	padding: 0;
+	p {
+		text-align: center;
+		width: 15px;
+		margin-right: 0;
+	}
 	button {
 		position: relative;
 		background: none;
@@ -30,12 +40,13 @@
 		width: 10px;
 		height: 10px;
 		cursor: pointer;
+		padding: 13px 18px;
 		&:before {
 			content: '';
 			display: block;
 			position: absolute;
 			top: 50%;
-			left: 0;
+			left: calc(50% - 3px);
 			border-top: 1px solid var(--black);
 			width: 9px;
 		}
@@ -46,7 +57,7 @@
 			position: absolute;
 			display: block;
 			top: 50%;
-			left: 0;
+			left: calc(50% - 3px);
 			border-top: 1px solid var(--black);
 			width: 9px;
 			transform: rotate(90deg);

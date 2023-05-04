@@ -1,10 +1,11 @@
+@import '../../styles/mixin.scss';
+
 .header {
 	display: flex;
 	flex-direction: column;
-	padding: 35px 20px 0;
-	margin-bottom: 30px;
+	padding: clamp(20px, calc(var(--index) * 3), 35px) 20px 0 20px;
+	margin-bottom: calc(var(--index) * 2);
 	.header_title {
-		// font-size: 32px;
 		font-size: clamp(14px, calc(var(--index) * 3), 32px);
 		font-weight: 500;
 		color: var(--grey-400);
@@ -13,7 +14,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding-top: 20px;
+		@include responsive(padding-top, 15, 2, 20);
 	}
 }
 
@@ -22,27 +23,3 @@
 		padding: 35px 250px 0;
 	}
 }
-
-// @media screen and (min-width: 250px) {
-// 	.header_title {
-// 		font-size: 32px;
-// 	}
-// }
-
-// @media screen and (min-width: 300px) {
-// 	.button_link {
-// 		font-size: calc(var(--index) * 1.5);
-// 	}
-// 	.active {
-// 		padding: 3.5px calc(var(--index) * 1.5);
-// 	}
-// }
-
-// @media screen and (min-width: 350px) {
-// 	.button_link {
-// 		font-size: 16px;
-// 	}
-// 	.active {
-// 		padding: 3.5px calc(var(--index) * 1.5);
-// 	}
-// }

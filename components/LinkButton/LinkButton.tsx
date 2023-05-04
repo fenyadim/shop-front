@@ -8,7 +8,7 @@ type ILinkButton = {
 	href?: string
 	isBig?: boolean
 	isBordered?: boolean
-	styleBtn?: 'border' | 'accent' | 'clear'
+	styleBtn?: 'border' | 'accent' | 'clear' | 'tab'
 } & ButtonHTMLAttributes<HTMLButtonElement> &
 	PropsWithChildren
 
@@ -30,6 +30,7 @@ const LinkButton: FC<ILinkButton> = ({
 				[styles.active]: isBordered,
 				[styles.accent]: styleBtn === 'accent',
 				[styles.clear]: styleBtn === 'clear',
+				[styles.tab]: styleBtn === 'tab',
 			})}
 			{...rest}
 		>

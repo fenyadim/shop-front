@@ -111,17 +111,14 @@ const FormOrder: FC<IStateRedux> = ({ priceTotal, basket }) => {
 					error={errors.apartment}
 				/>
 			</div>
-			<motion.div
-				variants={animateVariable('y', -30, 0.2)}
-				style={{ display: 'flex', justifyContent: 'space-between' }}
-			>
+			<div style={{ display: 'flex', justifyContent: 'space-between' }}>
 				<LinkButton type="submit" disabled={!isValid} styleBtn="accent">
 					Оформить заказ
 				</LinkButton>
 				<LinkButton styleBtn="clear" onClick={() => dispatch(CLEAR())}>
 					Очистить корзину
 				</LinkButton>
-			</motion.div>
+			</div>
 		</motion.form>
 	)
 }

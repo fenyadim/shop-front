@@ -2,9 +2,9 @@ $paddingForm: 40px;
 
 .form {
 	position: relative;
-	// max-width: 370px;
+	overflow: hidden;
+	padding: $paddingForm 1px 0 1px;
 	width: 100%;
-	padding-top: $paddingForm;
 	justify-self: center;
 	&::before {
 		position: absolute;

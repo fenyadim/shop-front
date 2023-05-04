@@ -74,7 +74,8 @@
 }
 
 .vertical {
-	height: 250px;
+	min-height: 220px;
+	max-height: 250px;
 	.info_wrapper {
 		right: 0;
 		left: 0;
@@ -82,29 +83,17 @@
 		border-radius: 20px;
 		padding: 7px 10px 10px 10px;
 		.product_brand {
-			font-size: 8px;
+			font-size: 0.5rem;
 		}
 		.product_name {
-			font-size: 12px;
+			font-size: 0.75rem;
 		}
 		.info_bottom {
-			margin-top: 12px;
+			margin-top: 0.75rem;
 		}
 	}
 	.product_img {
 		width: 100%;
-	}
-}
-
-@media screen and (min-height: 450px) {
-	.vertical {
-		height: 220px;
-	}
-}
-
-@media screen and (min-height: 520px) {
-	.vertical {
-		height: 250px;
 	}
 }
 

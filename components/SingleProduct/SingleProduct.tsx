@@ -38,7 +38,7 @@ const SingleProduct: FC<IProductWithCategory> = (props) => {
 						fill
 						unoptimized
 						style={{
-							objectFit: 'cover',
+							objectFit: 'scale-down',
 							objectPosition: 'top',
 						}}
 						priority

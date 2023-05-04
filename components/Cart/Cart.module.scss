@@ -22,26 +22,9 @@
 	display: grid;
 	grid-template-rows: min-content min-content;
 	width: 100%;
+	height: var(--height-layout);
 	overflow-y: scroll;
 	padding: 1px 20px;
-}
-
-@media screen and (min-height: 400px) {
-	.basket {
-		height: 49vh;
-	}
-}
-
-@media screen and (min-height: 550px) {
-	.basket {
-		height: 56vh;
-	}
-}
-
-@media screen and (min-height: 800px) {
-	.basket {
-		height: 70vh;
-	}
 }
 
 @media screen and (min-width: 800px) {
@@ -53,12 +36,6 @@
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: min-content;
 		gap: 50px;
-	}
-}
-
-@media screen and (min-height: 1100px) {
-	.basket {
-		height: 79vh;
 	}
 }
 

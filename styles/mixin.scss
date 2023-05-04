@@ -1,0 +1,3 @@
+@mixin responsive($elem, $min, $index, $max) {
+	#{$elem}: clamp(#{$min}px, calc(var(--index) * #{$index}), #{$max}px);
+}

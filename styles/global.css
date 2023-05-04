@@ -15,6 +15,7 @@ input {
 
 body {
 	background: var(--background);
+	overflow: hidden;
 }
 
 :root {
@@ -27,4 +28,5 @@ body {
 	--black: #1e1e1e;
 	--red: #ff6060;
 	--background: #f8f8f8;
+	--height-layout: calc(100% - clamp(170px, calc(var(--index) * 25), 270px));
 }
