@@ -1,3 +1,11 @@
-@mixin responsive($elem, $min, $index, $max) {
-	#{$elem}: clamp(#{$min}px, calc(var(--index) * #{$index}), #{$max}px);
+@mixin responsive($elem, $min, $index, $max, $important: false) {
+	@if $important == false {
+		#{$elem}: clamp(#{$min}, calc(var(--index) * #{$index}), #{$max});
+	} @else {
+		#{$elem}: clamp(
+			#{$min},
+			calc(var(--index) * #{$index}),
+			#{$max}
+		) !important;
+	}
 }

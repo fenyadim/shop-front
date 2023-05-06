@@ -27,17 +27,18 @@ const Button: React.FC<IButton> = ({ isBig = false, ...props }) => {
 		dispatch(DECREASE_PRODUCT(props.slug))
 	}
 
-	const sizeImg = isBig ? 16 : 13
+	const sizeImg = isBig ? 16 : 15
 
 	return (
-		<>
+		<div
+			className={cn(styles.button_wrapper, {
+				[styles.button_big]: isBig,
+				[styles.button_active]: countProduct >= 1,
+			})}
+			onClick={countProduct < 1 ? addProduct : () => false}
+		>
 			{countProduct < 1 ? (
-				<div
-					className={cn(styles.button_wrapper, {
-						[styles.button_big]: isBig,
-					})}
-					onClick={addProduct}
-				>
+				<>
 					<p className={styles.price_title}>{props.price} руб.</p>
 					<Image
 						src="/image/cart.svg"
@@ -45,19 +46,15 @@ const Button: React.FC<IButton> = ({ isBig = false, ...props }) => {
 						width={sizeImg}
 						height={sizeImg}
 					/>
-				</div>
+				</>
 			) : (
-				<div
-					className={cn(styles.button_wrapper, styles.button_active, {
-						[styles.button_big]: isBig,
-					})}
-				>
+				<>
 					<button onClick={decreaseProduct} />
 					<p>{countProduct}</p>
 					<button className={styles.plus} onClick={addProduct} />
-				</div>
+				</>
 			)}
-		</>
+		</div>
 	)
 }
 

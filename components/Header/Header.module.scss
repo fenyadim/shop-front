@@ -6,15 +6,15 @@
 	padding: clamp(20px, calc(var(--index) * 3), 35px) 20px 0 20px;
 	margin-bottom: calc(var(--index) * 2);
 	.header_title {
-		font-size: clamp(14px, calc(var(--index) * 3), 32px);
+		@include responsive(font-size, 0.875rem, 3, 2rem);
 		font-weight: 500;
 		color: var(--grey-400);
 	}
 	.header_nav {
+		@include responsive(padding-top, 15px, 2, 20px);
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		@include responsive(padding-top, 15, 2, 20);
 	}
 }
 

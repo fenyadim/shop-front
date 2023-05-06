@@ -4,12 +4,12 @@
 	max-height: 26px;
 	justify-content: center;
 	align-items: center;
-	padding: 6px 15px;
+	padding: 6px clamp(10px, calc(var(--index) * 1.4), 15px);
 	border-radius: 20px;
 	background: var(--accent);
 	cursor: pointer;
 	p {
-		font-size: 10px;
+		font-size: 0.625rem;
 		margin-right: 5px;
 	}
 }
@@ -17,8 +17,12 @@
 .button_big {
 	max-width: 120px;
 	min-width: 100px;
+	max-height: 30px;
+	button {
+		padding: 15px 18px !important;
+	}
 	p {
-		font-size: 13px;
+		font-size: 0.8125rem;
 	}
 }
 

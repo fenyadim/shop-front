@@ -8,7 +8,7 @@ const nextConfig = {
 		APP_URL: 'http://127.0.0.1:3000',
 		HOST_BACK: '127.0.0.1',
 		PORT_BACK: '1337',
-		URL_BACK: `https://strapi.shop-with-tayana.ru`,
+		URL_BACK: `https://strapi.shop-tatyana.ru`,
 	},
 	images: {
 		remotePatterns: [
@@ -37,7 +37,7 @@ const nextConfig = {
 		return [
 			{
 				source: '/uploads/:path*',
-				destination: `https://strapi.shop-with-tayana.ru/uploads/:path*`, // The :path parameter is used here so will not be automatically passed in the query
+				destination: `https://strapi.shop-tatyana.ru/uploads/:path*`, // The :path parameter is used here so will not be automatically passed in the query
 			},
 		]
 	},

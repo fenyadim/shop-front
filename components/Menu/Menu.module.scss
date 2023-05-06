@@ -1,9 +1,9 @@
 @import '../../styles/mixin.scss';
-$size: 60;
+$size: 60px;
 
 .menu_wrapper {
-	@include responsive(width, 180, 10, 200);
-	@include responsive(grid-template-rows, 30, 4.5, 45);
+	@include responsive(width, 180px, 10, 200px);
+	@include responsive(grid-template-rows, 30px, 4.5, 45px);
 	position: fixed;
 	left: 50%;
 	transform: translateX(-50%);
@@ -11,9 +11,6 @@ $size: 60;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	align-items: center;
-	// justify-content: space-between;
-	// align-items: center;
-	// padding: 0px clamp(19px, calc(var(--index) * 2.5), 23px);
 	border-radius: 25px;
 	background: #fff;
 	outline: 1px solid var(--grey);
@@ -25,25 +22,19 @@ $size: 60;
 
 	img {
 		vertical-align: middle;
-		@include responsive(width, 22, 3, 26);
-		@include responsive(height, 22, 3, 26);
+		@include responsive(width, 22px, 3, 26px);
+		@include responsive(height, 22px, 3, 26px);
 	}
 }
 
 .basket_btn {
-	// position: absolute;
 	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	// left: 50%;
-	// bottom: 50%;
-	// transform: translate(-50%, 50%);
 	background: var(--accent);
-	@include responsive(height, 30, 6.5, $size);
-	@include responsive(width, 30, 6.5, $size);
-	// width: 60px;
-	// height: 60px;
+	@include responsive(height, 30px, 6.5, $size);
+	@include responsive(width, 30px, 6.5, $size);
 	border-radius: 50%;
 
 	span {
@@ -57,6 +48,6 @@ $size: 60;
 		height: 15px;
 		border-radius: 50%;
 		background: var(--red);
-		font-size: 8px;
+		font-size: 0.5rem;
 	}
 }

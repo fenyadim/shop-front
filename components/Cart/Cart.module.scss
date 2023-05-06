@@ -1,5 +1,5 @@
 .total_sum {
-	font-size: clamp(12px, calc(var(--index) * 2.2), 20px);
+	font-size: clamp(0.75rem, calc(var(--index) * 2.2), 1.25rem);
 	font-weight: 600;
 }
 
