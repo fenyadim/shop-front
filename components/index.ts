@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 export const Header = dynamic(() => import('./Header/Header'))
 export const Cart = dynamic(() => import('./Cart/Cart'))
 export const About = dynamic(() => import('./About/About'))
+export const Error = dynamic(() => import('./Error/Error'))
 export const ProductsWrapper = dynamic(
 	() => import('./ProductsWrapper/ProductsWrapper')
 )

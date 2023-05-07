@@ -2,13 +2,11 @@ import { InputHTMLAttributes } from 'react'
 import {
 	ChangeHandler,
 	FieldError,
-	FieldValues,
 	RefCallBack,
 	RegisterOptions,
-	UseFormRegister,
 } from 'react-hook-form'
 
-import { IFormValues } from '@/types/index'
+import { IFormValues } from '@/types'
 
 export interface IInputProps {
 	title?: string

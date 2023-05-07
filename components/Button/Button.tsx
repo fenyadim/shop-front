@@ -49,9 +49,9 @@ const Button: React.FC<IButton> = ({ isBig = false, ...props }) => {
 				</>
 			) : (
 				<>
-					<button onClick={decreaseProduct} />
+					<button onClick={decreaseProduct} name="Minus" />
 					<p>{countProduct}</p>
-					<button className={styles.plus} onClick={addProduct} />
+					<button className={styles.plus} onClick={addProduct} name="Plus" />
 				</>
 			)}
 		</div>

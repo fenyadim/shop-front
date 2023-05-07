@@ -5,6 +5,7 @@ export interface ISimpleFetchingData {
 
 export interface ITabs extends ISimpleFetchingData {
 	subcategories: ISimpleFetchingData[]
+	products: IProduct[]
 }
 
 export interface IQueryParam {

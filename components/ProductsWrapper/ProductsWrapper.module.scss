@@ -1,13 +1,16 @@
+@import '@/styles/mixin.scss';
+
 .wrapper {
 	display: grid;
 	gap: 15px;
 	height: calc(100% - clamp(170px, calc(var(--index) * 22), 210px));
 	grid-template-columns: repeat(
 		auto-fit,
-		clamp(150px, calc(var(--index) * 20), 180px)
+		clamp(170px, calc(var(--index) * 16), 210px) //200px
 	);
+	grid-template-rows: min-content;
 	justify-content: center;
-	padding: 10px 10px;
+	padding: 10px 20px;
 	overflow-y: scroll;
 }
 
@@ -16,3 +19,5 @@
 	text-align: center;
 	font-size: 1.5rem;
 }
+
+@include padding-desktop('.wrapper', 10px);

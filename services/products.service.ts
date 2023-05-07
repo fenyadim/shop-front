@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 
 import { IBasketData } from '@/redux/basketSlice'
 
@@ -9,6 +9,14 @@ axios.defaults.baseURL = process.env.URL_BACK
 interface IFetchingType {
 	data: IProductsData[]
 	meta: IMeta
+}
+
+interface IStatusError {
+	statusCode: number
+}
+
+interface IFetchOne extends IStatusError {
+	data: IProduct[]
 }
 
 export const productsService = {
@@ -27,7 +35,7 @@ export const productsService = {
 	},
 
 	async fetchOne(slug: string) {
-		return await axios.get<{ data: IProduct[] }>(
+		return await axios.get<IFetchOne>(
 			`/api/productsp?filters[slug][$eqi]=${slug}&populate=*`
 		)
 	},

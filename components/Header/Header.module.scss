@@ -18,8 +18,4 @@
 	}
 }
 
-@media screen and (min-width: 960px) {
-	.header {
-		padding: 35px 250px 0;
-	}
-}
+@include padding-desktop('.header', 35px, 0);

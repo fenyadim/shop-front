@@ -1,5 +1,4 @@
 import { GetServerSideProps, NextPage } from 'next'
-import React from 'react'
 
 import { ProductsWrapper } from '@/components'
 
@@ -25,8 +24,21 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	)
 	const { data: products, meta } = response.data
 	const { data: tabs } = await tabsService.fetchTabs()
+	const tabsHaveProducts = tabs.data.filter(({ products }) => products.length)
+
+	if (!products.length) {
+		return {
+			notFound: true,
+		}
+	}
 
 	return {
-		props: { products, tabs: tabs.data, meta },
+		props: {
+			products,
+			tabs: Array.isArray(tabsHaveProducts)
+				? tabsHaveProducts
+				: [tabsHaveProducts],
+			meta,
+		},
 	}
 }

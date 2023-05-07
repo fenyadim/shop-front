@@ -1,3 +1,5 @@
+@import '../../styles/mixin.scss';
+
 .card {
 	position: relative;
 	display: block;
@@ -31,20 +33,17 @@
 		color: var(--grey-400);
 		text-align: center;
 	}
-
 	.product_name {
 		font-weight: 600;
 		text-align: center;
-		font-size: 0.75rem;
 	}
-
 	.info_bottom {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 
 		.volume {
-			font-size: 0.5rem;
+			@include responsive(font-size, 0.58rem, 0.9, 0.75rem);
 			color: var(--grey-400);
 		}
 	}
@@ -74,8 +73,7 @@
 }
 
 .vertical {
-	min-height: 220px;
-	max-height: 250px;
+	height: clamp(230px, calc(var(--index) * 20), 280px); //250px
 	.info_wrapper {
 		right: 0;
 		left: 0;
@@ -83,10 +81,11 @@
 		border-radius: 20px;
 		padding: 7px 10px 10px 10px;
 		.product_brand {
-			font-size: 0.5rem;
+			@include responsive(font-size, 0.58rem, 0.9, 0.75rem);
 		}
 		.product_name {
-			font-size: 0.75rem;
+			transform: translateY(calc(var(--index) * -0.1));
+			@include responsive(font-size, 0.75rem, 1.2, 1rem);
 		}
 		.info_bottom {
 			margin-top: 0.75rem;

@@ -1,15 +1,16 @@
+@import '../../styles/mixin.scss';
+
 .button_wrapper {
 	display: flex;
-	max-width: 100px;
-	max-height: 26px;
 	justify-content: center;
 	align-items: center;
-	padding: 6px clamp(10px, calc(var(--index) * 1.4), 15px);
+	padding: 5.5px 10px;
 	border-radius: 20px;
 	background: var(--accent);
 	cursor: pointer;
 	p {
-		font-size: 0.625rem;
+		@include responsive(font-size, 0.625rem, 0.54, 0.75rem);
+		white-space: nowrap;
 		margin-right: 5px;
 	}
 }
@@ -44,7 +45,8 @@
 		width: 10px;
 		height: 10px;
 		cursor: pointer;
-		padding: 13px 18px;
+		padding: clamp(12px, calc(var(--index) * 1.5), 14.5px)
+			clamp(12px, calc(var(--index) * 1.8), 18px);
 		&:before {
 			content: '';
 			display: block;

@@ -9,3 +9,11 @@
 		) !important;
 	}
 }
+
+@mixin padding-desktop($class, $top, $bottom: $top) {
+	@media screen and (min-width: 1220px) {
+		#{$class} {
+			padding: $top 20% $bottom;
+		}
+	}
+}
