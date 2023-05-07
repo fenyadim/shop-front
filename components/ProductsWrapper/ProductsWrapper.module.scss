@@ -3,7 +3,6 @@
 .wrapper {
 	display: grid;
 	gap: 15px;
-	height: calc(100% - clamp(170px, calc(var(--index) * 22), 210px));
 	grid-template-columns: repeat(
 		auto-fit,
 		clamp(170px, calc(var(--index) * 16), 210px) //200px

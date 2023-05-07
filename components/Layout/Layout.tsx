@@ -58,7 +58,9 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
 				className={cn(jostFont.className, styles.layout)}
 			>
 				{children}
-				<Menu />
+				<footer>
+					<Menu />
+				</footer>
 			</motion.div>
 		</AnimatePresence>
 	)
