@@ -5,7 +5,8 @@
 	grid-template-rows: 290px min-content;
 	gap: 20px;
 	padding: 0 20px;
-	height: var(--height-layout);
+	height: 100%;
+	// height: var(--height-layout);
 	overflow-y: scroll;
 	padding-bottom: 15px;
 }

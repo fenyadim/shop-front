@@ -73,7 +73,7 @@
 }
 
 .vertical {
-	height: clamp(230px, calc(var(--index) * 20), 280px); //250px
+	height: clamp(230px, calc(var(--index) * 20), 270px);
 	.info_wrapper {
 		right: 0;
 		left: 0;
