@@ -4,10 +4,6 @@ $size: 60px;
 .menu_wrapper {
 	@include responsive(width, 180px, 10, 200px);
 	@include responsive(grid-template-rows, 30px, 4.5, 45px);
-	// position: fixed;
-	// left: 50%;
-	// transform: translateX(-50%);
-	// bottom: 30px;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	align-items: center;
@@ -19,6 +15,7 @@ $size: 60px;
 
 	> * {
 		justify-self: center;
+		z-index: 1;
 	}
 
 	img {
