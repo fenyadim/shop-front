@@ -1,11 +1,12 @@
 .layout {
 	position: relative;
 	display: grid;
-	grid-template-rows: min-content auto 90px;
+	grid-template-rows: min-content 1fr 80px;
 	height: 100vh;
 	width: 100vw;
 	overflow: hidden;
 	footer {
+		padding-top: 15px;
 		justify-self: center;
 	}
 }
