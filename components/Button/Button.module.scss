@@ -4,12 +4,14 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	min-height: 29px;
 	padding: 5.5px 10px;
 	border-radius: 20px;
 	background: var(--accent);
 	cursor: pointer;
 	p {
-		@include responsive(font-size, 0.625rem, 0.54, 0.75rem);
+		font-size: 0.75rem;
+		// @include responsive(font-size, 0.625rem, 0.54, 0.75rem);
 		white-space: nowrap;
 		margin-right: 5px;
 	}
@@ -45,8 +47,9 @@
 		width: 10px;
 		height: 10px;
 		cursor: pointer;
-		padding: clamp(12px, calc(var(--index) * 1.5), 14.5px)
-			clamp(12px, calc(var(--index) * 1.8), 18px);
+		padding: 14.5px 18px;
+		// padding: clamp(12px, calc(var(--index) * 1.5), 14.5px)
+		// 	clamp(12px, calc(var(--index) * 1.8), 18px);
 		&:before {
 			content: '';
 			display: block;
@@ -67,6 +70,14 @@
 			border-top: 1px solid var(--black);
 			width: 9px;
 			transform: rotate(90deg);
+		}
+	}
+}
+
+@include screen-phone {
+	.button_wrapper {
+		p {
+			font-size: 0.6875rem;
 		}
 	}
 }

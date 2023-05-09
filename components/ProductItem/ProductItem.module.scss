@@ -67,25 +67,25 @@
 		justify-content: space-between;
 		padding: 12px 10px 12px 10px;
 	}
+	.product_name {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
 	.product_img {
 		height: 100%;
 	}
 }
 
 .vertical {
-	height: clamp(230px, calc(var(--index) * 20), 270px);
 	.info_wrapper {
 		right: 0;
 		left: 0;
 		bottom: 0;
 		border-radius: 20px;
 		padding: 7px 10px 10px 10px;
-		.product_brand {
-			@include responsive(font-size, 0.58rem, 0.9, 0.75rem);
-		}
 		.product_name {
 			transform: translateY(calc(var(--index) * -0.1));
-			@include responsive(font-size, 0.75rem, 1.2, 1rem);
 		}
 		.info_bottom {
 			margin-top: 0.75rem;
@@ -96,30 +96,93 @@
 	}
 }
 
-@media screen and (min-width: 250px) {
+@include screen-phone {
+	.vertical {
+		height: 250px;
+		.product_brand {
+			font-size: 0.6875rem;
+		}
+		.product_name {
+			font-size: 0.875rem;
+		}
+		.info_bottom {
+			.volume {
+				font-size: 0.6875rem;
+			}
+		}
+	}
 	.horizontal {
-		.info_wrapper {
-			.product_brand {
-				font-size: 10px;
-			}
-			.product_name {
-				font-size: 14px;
-				transform: translateY(-2px);
-			}
+		.product_brand {
+			font-size: 0.75rem;
+		}
+		.product_name {
+			font-size: 0.875rem;
+			transform: translateY(-2px);
 		}
 	}
 }
 
-@media screen and (min-width: 550px) {
-	.horizontal {
-		.info_wrapper {
-			.product_brand {
-				font-size: 11px;
-			}
-			.product_name {
-				font-size: 15px;
-				transform: translateY(-2px);
+@include screen-large-phone {
+	.vertical {
+		height: 260px;
+		.product_brand {
+			font-size: 0.75rem;
+		}
+		.product_name {
+			font-size: 0.875rem;
+		}
+		.info_bottom {
+			.volume {
+				font-size: 0.75rem;
 			}
 		}
 	}
+	.horizontal {
+		.product_brand {
+			font-size: 0.875rem;
+		}
+		.product_name {
+			font-size: 1rem;
+			transform: translateY(-2px);
+		}
+		.price {
+			font-size: 0.875rem;
+		}
+	}
 }
+
+@include screen-laptop {
+	.vertical {
+		.product_name {
+			font-size: 0.9375rem;
+		}
+	}
+}
+
+// @media screen and (min-width: 250px) {
+// 	.horizontal {
+// 		.info_wrapper {
+// 			.product_brand {
+// 				font-size: 10px;
+// 			}
+// 			.product_name {
+// 				font-size: 14px;
+// 				transform: translateY(-2px);
+// 			}
+// 		}
+// 	}
+// }
+
+// @media screen and (min-width: 550px) {
+// 	.horizontal {
+// 		.info_wrapper {
+// 			.product_brand {
+// 				font-size: 11px;
+// 			}
+// 			.product_name {
+// 				font-size: 15px;
+// 				transform: translateY(-2px);
+// 			}
+// 		}
+// 	}
+// }
