@@ -17,7 +17,10 @@ const Tab: FC<ITabsProps> = ({ categories, isSubTab = false, activeTab }) => {
 	const { query } = useRouter()
 	const [active, setActive] = useState<string | string[] | undefined>('')
 
+	console.log(activeTab)
+
 	useEffect(() => {
+		setActive('')
 		if (activeTab) {
 			setActive(activeTab)
 		}

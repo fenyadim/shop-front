@@ -15,6 +15,8 @@ const TabsWrapper: FC<{ tabs: ITabs[] }> = ({ tabs }) => {
 	>([])
 	const { query } = useRouter()
 
+	console.log(query)
+
 	useEffect(() => {
 		const find = tabs.find((item) => item.slug === query.category)
 		if (find) {
@@ -29,7 +31,11 @@ const TabsWrapper: FC<{ tabs: ITabs[] }> = ({ tabs }) => {
 		>
 			<div className={styles.tabs_wrapper}>
 				<Tab categories={tabs} activeTab={query.category} />
-				<Tab categories={subTabs} activeTab={query.subcategory} isSubTab />
+				<Tab
+					categories={subTabs}
+					activeTab={query.subcategory && query.subcategory[0]}
+					isSubTab
+				/>
 			</div>
 		</Meta>
 	)

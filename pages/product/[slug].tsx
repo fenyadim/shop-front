@@ -1,5 +1,4 @@
-import { AxiosError } from 'axios'
-import { GetServerSideProps, NextPage } from 'next'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 import { SingleProduct } from '@/components'
 
@@ -15,19 +14,26 @@ const ProductPage: NextPage<{ product: IProductWithCategory }> = ({
 
 export default ProductPage
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-	const { slug } = context.params as { slug: string }
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+	const { slug } = params as { slug: string }
 	const response = await productsService.fetchOne(slug)
 
 	const { data: product } = response.data
 
-	if (!product.length) {
-		return {
-			notFound: true,
-		}
-	}
-
 	return {
 		props: { product: product[0] },
+		revalidate: 10,
+	}
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+	const response = await productsService.fetchProductSlugs()
+	const { data: products } = response.data
+
+	return {
+		paths: products.map(({ slug }) => ({
+			params: { slug },
+		})),
+		fallback: false,
 	}
 }

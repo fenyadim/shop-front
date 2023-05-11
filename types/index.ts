@@ -10,7 +10,7 @@ export interface ITabs extends ISimpleFetchingData {
 
 export interface IQueryParam {
 	category?: string
-	subcategory?: string
+	subcategory?: string[]
 }
 
 export interface IProduct {

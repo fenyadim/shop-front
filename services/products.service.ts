@@ -20,18 +20,20 @@ interface IFetchOne extends IStatusError {
 }
 
 export const productsService = {
-	async fetchAllInCategory(category: string | undefined, page: string = '1') {
-		return await axios.get<IFetchingType>(
-			`/api/productsp?populate=*&filters[category][slug][$eqi][0]=${category}&pagination[page]=${page}&pagination[pageSize]=10`
-		)
-	},
-	async fetchAllInSubCategory(
+	async fetchAll(
+		category: string | undefined,
 		subcategory: string | undefined,
 		page: string = '1'
 	) {
-		return await axios.get<IFetchingType>(
-			`/api/productsp?populate=*&filters[subcategory][slug][$eqi][0]=${subcategory}&pagination[page]=${page}&pagination[pageSize]=10`
-		)
+		if (!subcategory) {
+			return await axios.get<IFetchingType>(
+				`/api/productsp?populate=*&filters[category][slug][$eqi][0]=${category}&pagination[page]=${page}&pagination[pageSize]=10`
+			)
+		} else {
+			return await axios.get<IFetchingType>(
+				`/api/productsp?populate=*&filters[subcategory][slug][$eqi][0]=${subcategory}&pagination[page]=${page}&pagination[pageSize]=10`
+			)
+		}
 	},
 
 	async fetchOne(slug: string) {
@@ -40,12 +42,16 @@ export const productsService = {
 		)
 	},
 
+	async fetchProductSlugs() {
+		return await axios.get<IFetchOne>('/api/productsp')
+	},
+
 	async postOrder(
 		formData: IFormValues,
 		priceTotal: number,
 		basket: IBasketData[]
 	) {
-		return await axios.post(`https://strapi.shop-with-tayana.ru/api/orders`, {
+		return await axios.post('/api/orders', {
 			data: {
 				...formData,
 				total: priceTotal,
