@@ -1,15 +1,3 @@
-@mixin responsive($elem, $min, $index, $max, $important: false) {
-	@if $important == false {
-		#{$elem}: clamp(#{$min}, calc(var(--index) * #{$index}), #{$max});
-	} @else {
-		#{$elem}: clamp(
-			#{$min},
-			calc(var(--index) * #{$index}),
-			#{$max}
-		) !important;
-	}
-}
-
 @mixin padding-desktop($class, $top, $bottom: $top) {
 	@media screen and (min-width: 1220px) {
 		#{$class} {

@@ -6,7 +6,6 @@
 	gap: 20px;
 	padding: 0 20px;
 	height: 100%;
-	// height: var(--height-layout);
 	overflow-y: scroll;
 	padding-bottom: 15px;
 }
@@ -27,28 +26,28 @@
 	background-color: #fff;
 	border-radius: 20px;
 	padding: 15px;
-	max-width: 500px;
+	width: 100%;
 	box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.06);
 	.header {
 		> h2 {
 			text-align: center;
-			@include responsive(font-size, 0.625rem, 1.5, 1rem);
+			font-size: 1rem;
 			color: var(--grey-400);
 		}
 		> h1 {
 			text-align: center;
-			@include responsive(font-size, 0.875rem, 2.2, 1.25rem);
+			font-size: 1.25rem;
 			font-weight: 600;
 		}
 	}
 	.desc {
-		@include responsive(font-size, 0.5rem, 1.5, 0.875rem);
+		font-size: 0.875rem;
 		> span {
 			color: var(--grey-400);
 		}
 	}
 	.volume {
-		@include responsive(font-size, 0.5rem, 1.5, 0.875rem);
+		font-size: 0.875rem;
 		color: var(--grey-400);
 	}
 }
@@ -71,6 +70,9 @@
 	}
 	.image_wrapper {
 		width: 70%;
+		img {
+			object-fit: cover !important;
+		}
 	}
 }
 
@@ -89,7 +91,26 @@
 	}
 }
 
-@media screen and (min-width: 550px) {
+@include screen-phone {
+	.info {
+		.header {
+			> h2 {
+				font-size: 0.75rem;
+			}
+			> h1 {
+				font-size: 1.125rem;
+			}
+		}
+		.desc {
+			font-size: 0.75rem;
+		}
+		.volume {
+			font-size: 0.75rem;
+		}
+	}
+}
+
+@include screen-large-phone {
 	.wrapper {
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 70%;
@@ -98,11 +119,8 @@
 	.info {
 		align-self: center;
 		height: min-content;
+		max-width: 500px;
 	}
 }
 
-@media screen and (min-width: 960px) {
-	.wrapper {
-		padding: 0 250px;
-	}
-}
+@include padding-desktop('.wrapper', 35px, 0);

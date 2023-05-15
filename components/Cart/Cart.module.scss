@@ -28,7 +28,7 @@
 	padding: 1px 20px;
 }
 
-@media screen and (min-width: 800px) {
+@include screen-table {
 	.basket_wrapper {
 		justify-self: end;
 		padding-bottom: 10px;
@@ -40,7 +40,7 @@
 	}
 }
 
-@media screen and (min-width: 1200px) {
+@include screen-desktop {
 	.basket_wrapper {
 		justify-self: end;
 		padding-bottom: 10px;

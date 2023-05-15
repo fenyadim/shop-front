@@ -15,8 +15,6 @@ const TabsWrapper: FC<{ tabs: ITabs[] }> = ({ tabs }) => {
 	>([])
 	const { query } = useRouter()
 
-	console.log(query)
-
 	useEffect(() => {
 		const find = tabs.find((item) => item.slug === query.category)
 		if (find) {

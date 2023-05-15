@@ -43,7 +43,7 @@
 		align-items: center;
 
 		.volume {
-			@include responsive(font-size, 0.58rem, 0.9, 0.75rem);
+			font-size: 0.75rem;
 			color: var(--grey-400);
 		}
 	}
@@ -158,31 +158,3 @@
 		}
 	}
 }
-
-// @media screen and (min-width: 250px) {
-// 	.horizontal {
-// 		.info_wrapper {
-// 			.product_brand {
-// 				font-size: 10px;
-// 			}
-// 			.product_name {
-// 				font-size: 14px;
-// 				transform: translateY(-2px);
-// 			}
-// 		}
-// 	}
-// }
-
-// @media screen and (min-width: 550px) {
-// 	.horizontal {
-// 		.info_wrapper {
-// 			.product_brand {
-// 				font-size: 11px;
-// 			}
-// 			.product_name {
-// 				font-size: 15px;
-// 				transform: translateY(-2px);
-// 			}
-// 		}
-// 	}
-// }

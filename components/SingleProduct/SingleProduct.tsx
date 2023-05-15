@@ -33,12 +33,10 @@ const SingleProduct: FC<IProductWithCategory> = (props) => {
 					<Image
 						src={image.url}
 						alt={name}
-						// height={290}
-						// width={355}
 						fill
 						unoptimized
 						style={{
-							objectFit: 'cover',
+							objectFit: 'contain',
 							objectPosition: 'top',
 						}}
 						priority

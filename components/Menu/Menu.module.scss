@@ -2,8 +2,8 @@
 $size: 60px;
 
 .menu_wrapper {
-	@include responsive(width, 180px, 10, 200px);
-	@include responsive(grid-template-rows, 30px, 4.5, 45px);
+	width: 200px;
+	grid-template-rows: 45px;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	align-items: center;
@@ -20,8 +20,8 @@ $size: 60px;
 
 	img {
 		vertical-align: middle;
-		@include responsive(width, 22px, 3, 26px);
-		@include responsive(height, 22px, 3, 26px);
+		width: 26px;
+		height: 26px;
 	}
 }
 
@@ -31,8 +31,8 @@ $size: 60px;
 	justify-content: center;
 	align-items: center;
 	background: var(--accent);
-	@include responsive(height, 30px, 6.5, $size);
-	@include responsive(width, 30px, 6.5, $size);
+	height: $size;
+	width: $size;
 	border-radius: 50%;
 
 	span {
@@ -47,5 +47,20 @@ $size: 60px;
 		border-radius: 50%;
 		background: var(--red);
 		font-size: 0.5938rem;
+	}
+}
+
+@include screen-phone {
+	.menu_wrapper {
+		width: 180px;
+		grid-template-rows: 40px;
+		img {
+			width: 24px;
+			height: 24px;
+		}
+	}
+	.basket_btn {
+		width: 52px;
+		height: 52px;
 	}
 }

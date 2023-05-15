@@ -14,11 +14,9 @@
 		border: none;
 		outline: 1px solid var(--grey);
 		border-radius: 20px;
-		height: 30px;
 		width: 100%;
-		padding: 5px 18px 5px 18px;
-
-		@include responsive(font-size, 0.75rem, 1.3, 0.875rem);
+		padding: 5px 18px;
+		font-size: 0.875rem;
 		transition: outline-color 0.1s;
 
 		&:hover {
@@ -35,7 +33,7 @@
 		position: absolute;
 		top: -11px;
 		left: 20px;
-		@include responsive(font-size, 0.625rem, 1.3, 0.75rem);
+		font-size: 0.75rem;
 		background: linear-gradient(
 			to bottom,
 			var(--background) 0%,
@@ -47,7 +45,7 @@
 
 .error_text {
 	display: block;
-	@include responsive(font-size, 0.625rem, 1.3, 0.75rem);
+	font-size: 0.75rem;
 }
 
 .error {
@@ -59,5 +57,28 @@
 	}
 	> span {
 		color: var(--red);
+	}
+}
+
+@include screen-phone {
+	.field {
+		input {
+			font-size: 0.75rem;
+			padding: 4px 18px;
+		}
+		.label {
+			font-size: 0.6875rem;
+		}
+		.error_text {
+			font-size: 0.6875rem;
+		}
+	}
+}
+
+@include screen-table {
+	.field {
+		input {
+			font-size: 0.8rem;
+		}
 	}
 }

@@ -3,11 +3,13 @@
 .tabs_wrapper {
 	display: flex;
 	flex-direction: column;
-	padding: clamp(20px, calc(var(--index) * 3), 35px) 20px 0;
+	padding: 35px 20px 0;
 }
 
-@include padding-desktop(
-	'.tabs_wrapper',
-	clamp(20px, calc(var(--index) * 3), 35px),
-	0
-);
+@include padding-desktop('.tabs_wrapper', 35px, 0);
+
+@include screen-phone {
+	.tabs_wrapper {
+		padding: 20px 20px 0;
+	}
+}
